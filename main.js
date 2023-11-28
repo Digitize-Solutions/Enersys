@@ -1,4 +1,4 @@
-const authToken = "9b5ed056-d619-47db-a8a8-1e7fad3f5a91";
+const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a";
 const assetId = "217d359f-1f2e-4703-9f74-8a6c47efb632";
 
 window.addEventListener("load", loadThreekitPlayer);
