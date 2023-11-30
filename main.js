@@ -1,10 +1,11 @@
-const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a"; // localhost
+const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a"; // github
+//const authToken = "9b5ed056-d619-47db-a8a8-1e7fad3f5a91"; // localhost
 
 window.addEventListener("load", loadThreekitPlayer);
 
 function loadThreekitPlayer() {
   const urlParams = new URLSearchParams(window.location.search);
-  const tmpAssetId = urlParams.get('assetId') || "e7fb88c1-972b-4c2a-999c-e1c4c5528c0e";
+  const tmpAssetId = urlParams.get('assetId');
 
   window
     .threekitPlayer({
