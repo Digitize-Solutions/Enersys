@@ -1,18 +1,19 @@
-const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a";
-const assetId = "217d359f-1f2e-4703-9f74-8a6c47efb632";
+const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a"; // localhost
 
 window.addEventListener("load", loadThreekitPlayer);
 
 function loadThreekitPlayer() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const tmpAssetId = urlParams.get('assetId') || "e7fb88c1-972b-4c2a-999c-e1c4c5528c0e";
+
   window
     .threekitPlayer({
       authToken,
       el: document.getElementById("playerContainer"),
-      assetId,
-      intialConfiguration: {},
+      assetId: tmpAssetId,
+      initialConfiguration: {},
       showConfigurator: false,
       showAR: true,
-      //display: 'image',
     })
     .then(async (api) => {
       window.api = api;
@@ -22,7 +23,10 @@ function loadThreekitPlayer() {
 
 function setBattery(value) {
   let assetId;
+  console.log("value",value)
   switch (value) {
+
+//loadhog family case    
     case "503743D-WGRN":
       assetId = "30625968-18af-4970-86da-3d17e771f882";
       break;
@@ -32,9 +36,18 @@ function setBattery(value) {
     case "503752D-WGRN":
       assetId = "b2eddd81-e8f6-429f-bb0b-ce7984de66e0";
       break;
-    default:
-      assetId = "30625968-18af-4970-86da-3d17e771f882";
+  
+
+//loadhog family case
+case "97566L-WGRN":
+      assetId = "e697ce44-7363-4397-9384-b0b4b0b38473";
       break;
+    case "97568L-WGRN":
+      assetId = "9f66f3ac-15a6-467e-a631-274fb702ff4b";
+      break;
+
+
+
   }
 
   configurator.setConfiguration({

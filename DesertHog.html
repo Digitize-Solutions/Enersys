@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sample</title>
+    <script src="https://preview.threekit.com/app/js/threekit-player.js"></script>
+
+    <style>
+      .containter {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .containterOptions {
+        width: 40vw;
+        display: grid;
+        grid-gap: 15px;
+        grid-auto-rows: min-content;
+      }
+      .mui-panel {
+        width: 55%;
+        margin-left: 22%;
+        background: #efefef;
+        padding: 10px 20px;
+        border-radius: 4px;
+      }
+
+      /* .mui-btn.mui-btn--accent {
+        background-color: #f44336;
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 20px;
+}
+
+.mui-btn.mui-btn--accent:hover {
+  background-color: red;
+} */
+
+    </style>
+  </head>
+  <body>
+    <div class="containter">
+      <div id="playerContainer" style="height: 600px; width: 60vw"></div>
+      <div class="containterOptions">
+        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+          Choose Battery
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setBattery('503743D-WGRN')"
+          >
+            503743D-WGRN
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setBattery('503744D-WGRN')"
+          >
+            503744D-WGRN
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setBattery('503752D-WGRN')"
+          >
+            503752D-WGRN
+          </button>
+
+          <br />
+        </div>
+        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+          Wire Position
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setWirePosition('A')"
+          >
+            A
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setWirePosition('B')"
+          >
+            B
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setWirePosition('C')"
+          >
+            C
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setWirePosition('D')"
+          >
+            D
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setWirePosition('AB')"
+          >
+            AB
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setWirePosition('A/B')"
+          >
+            A/B
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setWirePosition('CD')"
+          >
+            CD
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setWirePosition('C/D')"
+          >
+            C/D
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setWirePosition('A Reverse')"
+          >
+            Reverse A
+          </button>
+          <br />
+        </div>
+        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+          Tray Color
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setTrayColor('Grey')"
+          >
+            Grey
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setTrayColor('Blue')"
+          >
+            Blue
+          </button>
+          <br />
+        </div>
+        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+          Water Pipe
+          <button class="mui-btn mui-btn--accent" onclick="setWaterPipe('On')">
+            On
+          </button>
+          <button class="mui-btn mui-btn--accent" onclick="setWaterPipe('Off')">
+            Off
+          </button>
+          <br />
+        </div>
+        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+          Socket Color
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setSocketColor('Yellow')"
+          >
+            Yellow
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setSocketColor('Red')"
+          >
+            Red
+          </button>
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
