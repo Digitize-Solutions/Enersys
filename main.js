@@ -27,7 +27,7 @@ function setBattery(value) {
   console.log("value",value)
   switch (value) {
 
-//loadhog family case    
+//deserthog family case    
     case "503743D-WGRN":
       assetId = "30625968-18af-4970-86da-3d17e771f882";
       break;
@@ -37,7 +37,9 @@ function setBattery(value) {
     case "503752D-WGRN":
       assetId = "b2eddd81-e8f6-429f-bb0b-ce7984de66e0";
       break;
-  
+     case "76121D-WGRN":
+      assetId = "816d62a0-8f31-42a9-8b14-b2c579bb5789";
+      break;
 
 //loadhog family case
 case "97566L-WGRN":
