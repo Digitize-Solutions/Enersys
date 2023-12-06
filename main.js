@@ -1,11 +1,10 @@
-const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a"; // github
-//const authToken = "9b5ed056-d619-47db-a8a8-1e7fad3f5a91"; // localhost
+// const authToken = "9b5ed056-d619-47db-a8a8-1e7fad3f5a91"; // localhost
+const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a";// github
 
-window.addEventListener("load", loadThreekitPlayer);
+async function loadThreekitPlayer(name) {
+  
+  const tmpAssetId = getFamilyId(name);
 
-function loadThreekitPlayer() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const tmpAssetId = urlParams.get('assetId');
 
   window
     .threekitPlayer({
@@ -19,113 +18,174 @@ function loadThreekitPlayer() {
     .then(async (api) => {
       window.api = api;
       window.configurator = await api.getConfigurator();
+      setInitialAttributeValue();
     });
 }
 
-function setBattery(value) {
-  let assetId;
-  console.log("value",value)
-  switch (value) {
-
-//deserthog family case    
-    case "503743D-WGRN":
-      assetId = "30625968-18af-4970-86da-3d17e771f882";
-      break;
-    case "503744D-WGRN":
-      assetId = "1bfe3fd5-d2a1-49d7-a6e3-d5aad0341219";
-      break;
-    case "503752D-WGRN":
-      assetId = "b2eddd81-e8f6-429f-bb0b-ce7984de66e0";
-      break;
-     case "76121D-WGRN":
-      assetId = "816d62a0-8f31-42a9-8b14-b2c579bb5789";
-      break;
-
-//loadhog family case
-case "97566L-WGRN":
-      assetId = "e697ce44-7363-4397-9384-b0b4b0b38473";
-      break;
-    case "97568L-WGRN":
-      assetId = "9f66f3ac-15a6-467e-a631-274fb702ff4b";
-      break;
-
-
-
-  }
-
-  configurator.setConfiguration({
-    "Choose Battery": {
-      assetId: assetId,
-    },
-  });
+function setInitialAttributeValue() {
+  setWirePosition("A");
+  setWaterPipe("On");
+  setTrayCover("Off");
+  setSocketColor("Yellow");
+  setTrayColor("Grey");
 }
 
-function setWirePosition(value) {
-  let assetId;
+async function setAttributeValue(attributeName, value) {
+  switch (attributeName) {
+
+    // case "Choose Battery":
+    //   setBattery(value);
+    //   break;
+    case "Water Pipe":
+      setWaterPipe(value);
+      break;
+    case "Tray Cover":
+      setTrayCover(value);
+      break;
+    case "Wire Position":
+      setWirePosition(value);
+      break;
+      case "Socket Color":
+        setSocketColor(value);
+        break;
+        case "Tray Color":
+          setTrayColor(value);
+          break;
+  }
+}
+
+function setBattery(value) {
+  let assetId = getBatteryId(value);
+
+
+  configurator
+    .setConfiguration({
+      "Choose Battery": {
+        assetId: assetId,
+      },
+    })
+    .then((item) => {
+      setInitialAttributeValue();
+    });
+}
+
+async function setWirePosition(value) {
+  let meshToShow;
+
   switch (value) {
     case "A":
-      assetId = "fe8fe64a-5296-40c3-aebd-b2872cc80fc3";
+      meshToShow = "A_Assembly";
       break;
     case "B":
-      assetId = "3793ed14-0984-40df-9c90-175a8da1473a";
-      break;
-    case "C":
-      assetId = "58f1fda5-ef59-40ef-b70d-3754f5fc3eef";
-      break;
-    case "D":
-      assetId = "557eb3a0-41bf-417f-b6ba-a32859864bfe";
+      meshToShow = "B_Assembly";
       break;
     case "AB":
-      assetId = "5c07f157-9c98-4b90-be4f-a772cad7b195";
+      meshToShow = "AB_Assembly";
+      break;
+    case "C":
+      meshToShow = "C_Assembly";
+      break;
+    case "D":
+      meshToShow = "D_Assembly";
       break;
     case "A/B":
-      assetId = "48c802bf-08c1-4297-a31b-5359f3f8c93b";
+      meshToShow = "A_B_Assembly";
       break;
     case "CD":
-      assetId = "3d61c936-02e7-4890-adc4-85b3d5336929";
+      meshToShow = "CD_Assembly";
       break;
     case "C/D":
-      assetId = "70373f8f-dded-4ecc-8d82-e708098afef4";
+      meshToShow = "C_D_Assembly";
       break;
     case "A Reverse":
-      assetId = "9cf72e62-65f9-4f6f-8efb-5715b604d72a";
+      meshToShow = "A_Reverse_Assembly";
       break;
+
     default:
-      assetId = "fe8fe64a-5296-40c3-aebd-b2872cc80fc3";
+      meshToShow = "A_Assembly";
       break;
   }
 
-  configurator.setConfiguration({
-    "Wire Position": {
-      assetId: assetId,
-    },
-  });
+  const allMeshes = [
+    "A_Assembly",
+    "B_Assembly",
+    "AB_Assembly",
+    "A_Reverse_Assembly",
+    "C_D_Assembly",
+    "CD_Assembly",
+    "A_B_Assembly",
+    "D_Assembly",
+    "C_Assembly",
+  ];
+  const meshesToHide = allMeshes.filter((mesh) => mesh !== meshToShow);
+  for (const meshToHide of meshesToHide) {
+    // Show the All expect selected mesh
+    await setScene(meshToHide, false);
+  }
+  // Show the selected mesh
+  await setScene(meshToShow, true);
 }
 
-function setWaterPipe(value) {
-  let assetId;
+async function setWaterPipe(value) {
+  let mesh = "Waterwire_Assembly";
   switch (value) {
     case "On":
-      assetId = "d30fe1eb-db17-46d7-b562-2444ccc230bb";
+      value = true;
       break;
     case "Off":
-      assetId = "6864f552-4668-4001-bfce-c25c0100b588";
+      value = false;
       break;
-
     default:
-      assetId = "d30fe1eb-db17-46d7-b562-2444ccc230bb";
+      value = true;
       break;
   }
-  configurator.setConfiguration({
-    "Water Pipe": {
-      assetId: assetId,
-    },
-  });
+
+  setScene(mesh, value);
 }
 
-function setTrayColor(value) {
-  let assetId;
+async function setTrayCover(value) {
+  let mesh = "Covertop_Assembly";
   switch (value) {
+    case "On":
+      value = true;
+      break;
+    case "Off":
+      value = false;
+      break;
+    default:
+      value = true;
+      break;
+  }
+
+  setScene(mesh, value);
+}
+
+async function setScene(mesh, value) {
+  var playerObj = api.enableApi("player");
+  const model = playerObj.configurator.appliedConfiguration["Choose Battery"];
+  var assetInstance = await playerObj.getAssetInstance({
+    id: model,
+    plug: "Proxy",
+    property: "asset",
+  });
+  window.assetInstance = assetInstance;
+  api.scene.set(
+    {
+      from: assetInstance,
+      id: api.scene.findNode({
+        from: assetInstance,
+        name: mesh,
+      }),
+      plug: "Properties",
+      property: "visible",
+    },
+    value
+  );
+}
+
+function setTrayColor(color) {
+  let assetId;
+  switch (color) {
     case "Grey":
       assetId = "cf2f8cd0-d70a-448a-8ec9-fef0c9c0614e";
       break;
@@ -141,7 +201,7 @@ function setTrayColor(value) {
     "Tray Color": {
       assetId: assetId,
     },
-  });
+  })
 }
 
 function setSocketColor(value) {

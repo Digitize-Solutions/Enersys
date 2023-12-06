@@ -5,7 +5,8 @@
     <meta charset="utf-8" />
     <title>Sample</title>
     <script src="https://preview.threekit.com/app/js/threekit-player.js"></script>
-
+    <script src="main.js"></script>
+    <script src="utils.js"></script>
     <style>
       .containter {
         display: grid;
@@ -25,20 +26,6 @@
         border-radius: 4px;
       }
 
-      /* .mui-btn.mui-btn--accent {
-        background-color: #f44336;
-        color: white;
-        padding: 14px 25px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        margin: 20px;
-}
-
-.mui-btn.mui-btn--accent:hover {
-  background-color: red;
-} */
-
     </style>
   </head>
   <body>
@@ -47,6 +34,7 @@
       <div class="containterOptions">
         <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
           Choose Battery
+          <!-- onclick="setAttributeValue('Choose Battery','503743D-WGRN')" -->
           <button
             class="mui-btn mui-btn--accent"
             onclick="setBattery('503743D-WGRN')"
@@ -65,67 +53,69 @@
           >
             503752D-WGRN
           </button>
-<button
+          <button
             class="mui-btn mui-btn--accent"
             onclick="setBattery('76121D-WGRN')"
           >
           76121D-WGRN API
           </button>
+         
+
           <br />
         </div>
         <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
           Wire Position
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('A')"
+            onclick="setAttributeValue('Wire Position','A')"
           >
             A
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('B')"
+            onclick="setAttributeValue('Wire Position','B')"
           >
             B
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('C')"
+            onclick="setAttributeValue('Wire Position','C')"
           >
             C
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('D')"
+            onclick="setAttributeValue('Wire Position','D')"
           >
             D
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('AB')"
+            onclick="setAttributeValue('Wire Position','AB')"
           >
             AB
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('A/B')"
+            onclick="setAttributeValue('Wire Position','A/B')"
           >
             A/B
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('CD')"
+            onclick="setAttributeValue('Wire Position','CD')"
           >
             CD
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('C/D')"
+            onclick="setAttributeValue('Wire Position','C/D')"
           >
             C/D
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('A Reverse')"
+            onclick="setAttributeValue('Wire Position','A Reverse')"
           >
             Reverse A
           </button>
@@ -135,13 +125,13 @@
           Tray Color
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setTrayColor('Grey')"
+            onclick="setAttributeValue('Tray Color','Grey')"
           >
             Grey
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setTrayColor('Blue')"
+            onclick="setAttributeValue('Tray Color','Blue')"
           >
             Blue
           </button>
@@ -149,10 +139,21 @@
         </div>
         <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
           Water Pipe
-          <button class="mui-btn mui-btn--accent" onclick="setWaterPipe('On')">
+          <button class="mui-btn mui-btn--accent" onclick="setAttributeValue('Water Pipe','On')">
             On
           </button>
-          <button class="mui-btn mui-btn--accent" onclick="setWaterPipe('Off')">
+          <button class="mui-btn mui-btn--accent" onclick="setAttributeValue('Water Pipe','Off')">
+            Off
+          </button>
+          <br />
+        </div>
+
+        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+          Tray Cover
+          <button class="mui-btn mui-btn--accent" onclick="setAttributeValue('Tray Cover','On')">
+            On
+          </button>
+          <button class="mui-btn mui-btn--accent" onclick="setAttributeValue('Tray Cover','Off')">
             Off
           </button>
           <br />
@@ -161,13 +162,13 @@
           Socket Color
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setSocketColor('Yellow')"
+            onclick="setAttributeValue('Socket Color','Yellow')"
           >
             Yellow
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setSocketColor('Red')"
+            onclick="setAttributeValue('Socket Color','Red')"
           >
             Red
           </button>
@@ -175,7 +176,10 @@
         </div>
       </div>
     </div>
+    
+    <script>
+      loadThreekitPlayer("DesertHog");
+    </script>
 
-    <script src="main.js"></script>
   </body>
 </html>
