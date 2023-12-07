@@ -1,10 +1,8 @@
-// const authToken = "9b5ed056-d619-47db-a8a8-1e7fad3f5a91"; // localhost
+//const authToken = "9b5ed056-d619-47db-a8a8-1e7fad3f5a91"; // localhost
 const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a";// github
-
+var playerObj;
 async function loadThreekitPlayer(name) {
-  
   const tmpAssetId = getFamilyId(name);
-
 
   window
     .threekitPlayer({
@@ -18,6 +16,7 @@ async function loadThreekitPlayer(name) {
     .then(async (api) => {
       window.api = api;
       window.configurator = await api.getConfigurator();
+      playerObj = api.enableApi("player");
       setInitialAttributeValue();
     });
 }
@@ -28,11 +27,11 @@ function setInitialAttributeValue() {
   setTrayCover("Off");
   setSocketColor("Yellow");
   setTrayColor("Grey");
+  setBoxDimension("Off");
 }
 
 async function setAttributeValue(attributeName, value) {
   switch (attributeName) {
-
     // case "Choose Battery":
     //   setBattery(value);
     //   break;
@@ -45,18 +44,20 @@ async function setAttributeValue(attributeName, value) {
     case "Wire Position":
       setWirePosition(value);
       break;
-      case "Socket Color":
-        setSocketColor(value);
-        break;
-        case "Tray Color":
-          setTrayColor(value);
-          break;
+    case "Socket Color":
+      setSocketColor(value);
+      break;
+    case "Tray Color":
+      setTrayColor(value);
+      break;
+    case "Box Dimension":
+      setBoxDimension(value);
+      break;
   }
 }
 
 function setBattery(value) {
   let assetId = getBatteryId(value);
-
 
   configurator
     .setConfiguration({
@@ -66,7 +67,7 @@ function setBattery(value) {
     })
     .then((item) => {
       setInitialAttributeValue();
-    });
+          });
 }
 
 async function setWirePosition(value) {
@@ -160,8 +161,24 @@ async function setTrayCover(value) {
   setScene(mesh, value);
 }
 
+async function setBoxDimension(value) {
+  let mesh = "Box Dimensions";
+  switch (value) {
+    case "On":
+      value = true;
+      break;
+    case "Off":
+      value = false;
+      break;
+    default:
+      value = true;
+      break;
+  }
+
+  setScene(mesh, value);
+}
+
 async function setScene(mesh, value) {
-  var playerObj = api.enableApi("player");
   const model = playerObj.configurator.appliedConfiguration["Choose Battery"];
   var assetInstance = await playerObj.getAssetInstance({
     id: model,
@@ -201,7 +218,7 @@ function setTrayColor(color) {
     "Tray Color": {
       assetId: assetId,
     },
-  })
+  });
 }
 
 function setSocketColor(value) {

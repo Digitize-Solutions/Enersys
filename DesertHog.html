@@ -25,7 +25,6 @@
         padding: 10px 20px;
         border-radius: 4px;
       }
-
     </style>
   </head>
   <body>
@@ -33,36 +32,25 @@
       <div id="playerContainer" style="height: 600px; width: 60vw"></div>
       <div class="containterOptions">
         <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
-          Choose Battery
-          <!-- onclick="setAttributeValue('Choose Battery','503743D-WGRN')" -->
-          <button
+          <label for="batteryDropdown">Choose Battery:</label>
+          <select
+            id="batteryDropdown"
             class="mui-btn mui-btn--accent"
-            onclick="setBattery('503743D-WGRN')"
+            onchange="setBattery(this.value)"
           >
-            503743D-WGRN
-          </button>
-          <button
-            class="mui-btn mui-btn--accent"
-            onclick="setBattery('503744D-WGRN')"
-          >
-            503744D-WGRN
-          </button>
-          <button
-            class="mui-btn mui-btn--accent"
-            onclick="setBattery('503752D-WGRN')"
-          >
-            503752D-WGRN
-          </button>
-          <button
-            class="mui-btn mui-btn--accent"
-            onclick="setBattery('76121D-WGRN')"
-          >
-          76121D-WGRN API
-          </button>
-         
-
-          <br />
+            <option value="503743D-WGRN">503743D-WGRN</option>
+            <option value="503744D-WGRN">503744D-WGRN</option>
+            <option value="503752D-WGRN">503752D-WGRN</option>
+            <option value="76121D-WGRN">76121D-WGRN</option>
+            <option value="503736D-WGRC">503736D-WGRC</option>
+            <option value="504944D-WGRN">504944D-WGRN</option>
+            <option value="76122D-WGRC">76122D-WGRC</option>
+            <option value="66144D-WGRN">66144D-WGRN</option>
+            <option value="506910D-WGRN">506910D-WGRN</option>
+            <option value="67167D-WGRN">67167D-WGRN</option>
+          </select>
         </div>
+
         <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
           Wire Position
           <button
@@ -139,10 +127,16 @@
         </div>
         <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
           Water Pipe
-          <button class="mui-btn mui-btn--accent" onclick="setAttributeValue('Water Pipe','On')">
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Water Pipe','On')"
+          >
             On
           </button>
-          <button class="mui-btn mui-btn--accent" onclick="setAttributeValue('Water Pipe','Off')">
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Water Pipe','Off')"
+          >
             Off
           </button>
           <br />
@@ -150,10 +144,16 @@
 
         <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
           Tray Cover
-          <button class="mui-btn mui-btn--accent" onclick="setAttributeValue('Tray Cover','On')">
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Tray Cover','On')"
+          >
             On
           </button>
-          <button class="mui-btn mui-btn--accent" onclick="setAttributeValue('Tray Cover','Off')">
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Tray Cover','Off')"
+          >
             Off
           </button>
           <br />
@@ -174,12 +174,27 @@
           </button>
           <br />
         </div>
+        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+          Dimension
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Box Dimension','On')"
+          >
+            On
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Box Dimension','Off')"
+          >
+            Off
+          </button>
+          <br />
+        </div>
       </div>
     </div>
-    
+
     <script>
       loadThreekitPlayer("DesertHog");
     </script>
-
   </body>
 </html>

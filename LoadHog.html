@@ -47,23 +47,21 @@
       <div id="playerContainer" style="height: 600px; width: 60vw"></div>
       <div class="containterOptions">
         <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
-          Choose Battery
-          <button
+          <label for="batteryDropdown">Choose Battery:</label>
+          <select
+            id="batteryDropdown"
             class="mui-btn mui-btn--accent"
-            onclick="setBattery('97566L-WGRN')"
+            onchange="setBattery(this.value)"
           >
-          97566L-WGRN
-          </button>
-          <button
-            class="mui-btn mui-btn--accent"
-            onclick="setBattery('97568L-WGRN')"
-          >
-          97568L-WGRN
-          </button>
-       
-
-          <br />
+            <option value="97566L-WGRN">97566L-WGRN</option>
+            <option value="97568L-WGRN">97568L-WGRN</option>
+            <option value="97564L-WGRN">97564L-WGRN</option>
+            <option value="97556L-WGRN">97556L-WGRN</option>
+            <option value="503752L-WGRN">503752L-WGRN</option>
+            <option value="97560L-WGRN">97560L-WGRN</option>
+          </select>
         </div>
+
         <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
           Wire Position
           <button
@@ -149,6 +147,22 @@
           <br />
         </div>
         <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+          Tray Cover
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Tray Cover','On')"
+          >
+            On
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Tray Cover','Off')"
+          >
+            Off
+          </button>
+          <br />
+        </div>
+        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
           Socket Color
           <button
             class="mui-btn mui-btn--accent"
@@ -161,6 +175,22 @@
             onclick="setSocketColor('Red')"
           >
             Red
+          </button>
+          <br />
+        </div>
+        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+          Dimension
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Box Dimension','On')"
+          >
+            On
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Box Dimension','Off')"
+          >
+            Off
           </button>
           <br />
         </div>
