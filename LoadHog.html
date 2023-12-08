@@ -26,32 +26,19 @@
         padding: 10px 20px;
         border-radius: 4px;
       }
-
-      /* .mui-btn.mui-btn--accent {
-        background-color: #f44336;
-        color: white;
-        padding: 14px 25px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        margin: 20px;
-}
-
-.mui-btn.mui-btn--accent:hover {
-  background-color: red;
-} */
     </style>
   </head>
   <body>
     <div class="containter">
       <div id="playerContainer" style="height: 600px; width: 60vw"></div>
       <div class="containterOptions">
-        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+        <div style="width: 55%; margin-left: 22%" class="mui-panel">
           <label for="batteryDropdown">Choose Battery:</label>
           <select
+            value="97566L-WGRN"
             id="batteryDropdown"
             class="mui-btn mui-btn--accent"
-            onchange="setBattery(this.value)"
+            onchange="handleBatteryChange(this.value); setBattery(this.value);"
           >
             <option value="97566L-WGRN">97566L-WGRN</option>
             <option value="97568L-WGRN">97568L-WGRN</option>
@@ -62,65 +49,86 @@
           </select>
         </div>
 
-        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+        <div
+          style="width: 55%; margin-left: 22%"
+          class="mui-panel"
+          id="wirePositionDiv"
+        >
           Wire Position
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('A')"
+            onclick="setAttributeValue('Wire Position','A')"
+            id="A"
           >
             A
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('B')"
+            onclick="setAttributeValue('Wire Position','B')"
+            id="B"
           >
             B
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('C')"
+            onclick="setAttributeValue('Wire Position','C')"
+            id="C"
           >
             C
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('D')"
+            onclick="setAttributeValue('Wire Position','C Alternative')"
+            id="C Alternative"
+          >
+            C Alternative
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Wire Position','D')"
+            id="D"
           >
             D
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('AB')"
+            onclick="setAttributeValue('Wire Position','AB')"
+            id="AB"
           >
             AB
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('A/B')"
+            onclick="setAttributeValue('Wire Position','A/B')"
+            id="A/B"
           >
             A/B
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('CD')"
+            onclick="setAttributeValue('Wire Position','CD')"
+            id="CD"
           >
             CD
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('C/D')"
+            onclick="setAttributeValue('Wire Position','C/D')"
+            id="C/D"
           >
             C/D
           </button>
           <button
             class="mui-btn mui-btn--accent"
-            onclick="setWirePosition('A Reverse')"
+            onclick="setAttributeValue('Wire Position','A Reverse')"
+            id="A Reverse"
           >
             Reverse A
           </button>
           <br />
         </div>
-        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+
+        <div style="width: 55%; margin-left: 22%" class="mui-panel">
           Tray Color
           <button
             class="mui-btn mui-btn--accent"
@@ -136,7 +144,7 @@
           </button>
           <br />
         </div>
-        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+        <div style="width: 55%; margin-left: 22%" class="mui-panel">
           Water Pipe
           <button class="mui-btn mui-btn--accent" onclick="setWaterPipe('On')">
             On
@@ -146,7 +154,11 @@
           </button>
           <br />
         </div>
-        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+        <div
+          style="width: 55%; margin-left: 22%"
+          class="mui-panel"
+          id="trayCoverDiv"
+        >
           Tray Cover
           <button
             class="mui-btn mui-btn--accent"
@@ -162,7 +174,7 @@
           </button>
           <br />
         </div>
-        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+        <div style="width: 55%; margin-left: 22%" class="mui-panel">
           Socket Color
           <button
             class="mui-btn mui-btn--accent"
@@ -178,7 +190,7 @@
           </button>
           <br />
         </div>
-        <div style="width: 55%; margin-left: 22%" class="mui-panel" id="parent">
+        <div style="width: 55%; margin-left: 22%" class="mui-panel">
           Dimension
           <button
             class="mui-btn mui-btn--accent"
@@ -201,5 +213,118 @@
   </body>
   <script>
     loadThreekitPlayer("LoadHog");
+  </script>
+
+  <script>
+    function setInitialBatteryValue() {
+      var batteryDropdown = document.getElementById("batteryDropdown");
+      batteryDropdown.value = "97566L-WGRN";
+      handleBatteryChange("97566L-WGRN");
+    }
+    function handleBatteryChange(selectedValue) {
+      var trayCoverDiv = document.getElementById("trayCoverDiv");
+      var wirePositionDiv = document.getElementById("wirePositionDiv");
+      var wirePositionButtons = wirePositionDiv.getElementsByTagName("button");
+
+      // List of battery values that should show the Tray Cover
+      const showTrayCoverForBatteries = [
+        "503736D-WGRC",
+        "76122D-WGRC",
+        "66144D-WGRN",
+        "76121D-WGRN",
+        "70433D-WGRN",
+        "70436D-WGRN",
+      ];
+
+      // Check if the selected battery is in the list for Tray Cover
+      if (showTrayCoverForBatteries.includes(selectedValue)) {
+        trayCoverDiv.style.display = "block";
+      } else {
+        trayCoverDiv.style.display = "none";
+      }
+
+      // Hide all wire position buttons
+      for (var i = 0; i < wirePositionButtons.length; i++) {
+        wirePositionButtons[i].style.display = "none";
+      }
+
+      // Show wire position buttons based on the selected battery "A", "B", "C", "AB", "D", "C/D", "A Reverse", "A/B"
+
+      if (
+        selectedValue.includes("97566L-WGRN") ||
+        selectedValue.includes("97568L-WGRN") ||
+        selectedValue.includes("97564L-WGRN") ||
+        selectedValue.includes("97556L-WGRN") ||
+        selectedValue.includes("503752L-WGRN") ||
+        selectedValue.includes("97560L-WGRN")
+      ) {
+        let displayBlockEleArr = [
+          "A",
+          "B",
+          "C",
+          "AB",
+          "D",
+          "C/D",
+          "A Reverse",
+          "A/B",
+        ];
+        displayBlockEleArr.forEach((item) => {
+          let tmpEle = document.getElementById(item);
+
+          tmpEle.style.display = "inline-block";
+        });
+      }
+
+      // Show wire position buttons based on the selected battery   "A", "B", "C", "D", "AB", "A/B", "CD", "C Alternative"
+      // if (selectedValue.includes("503736D-WGRC")) {
+      //   let displayBlockEleArr = [
+      //     "A",
+      //     "B",
+      //     "C",
+      //     "D",
+      //     "AB",
+      //     "A/B",
+      //     "CD",
+      //     "C Alternative",
+      //   ];
+      //   displayBlockEleArr.forEach((item) => {
+      //     let tmpEle = document.getElementById(item);
+
+      //     tmpEle.style.display = "inline-block";
+      //   });
+      // }
+
+      // // Show wire position buttons based on the selected battery   "A", "B", "C", "AB", "D", "A/B"
+      // if (
+      //   selectedValue.includes("503743D-WGRN") ||
+      //   selectedValue.includes("503744D-WGRN") ||
+      //   selectedValue.includes("504944D-WGRN") ||
+      //   selectedValue.includes("76122D-WGRC") ||
+      //   selectedValue.includes("506910D-WGRN")
+      // );
+
+      // {
+      //   let displayBlockEleArr = ["A", "B", "C", "AB", "D", "A/B"];
+      //   displayBlockEleArr.forEach((item) => {
+      //     let tmpEle = document.getElementById(item);
+
+      //     tmpEle.style.display = "inline-block";
+      //   });
+      // }
+    }
+
+    function showWirePositionOptions(optionsToShow) {
+      var wirePositionDiv = document.getElementById("wirePositionDiv");
+      for (var i = 0; i < optionsToShow.length; i++) {
+        var buttonToShow = wirePositionDiv.querySelector([
+          (onclick *= "${optionsToShow[i]}"),
+        ]);
+        if (buttonToShow) {
+          buttonToShow.style.display = "inline-block";
+        }
+      }
+    }
+
+    window.onload = setInitialBatteryValue;
   </script>
 </html>

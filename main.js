@@ -32,9 +32,6 @@ function setInitialAttributeValue() {
 
 async function setAttributeValue(attributeName, value) {
   switch (attributeName) {
-    // case "Choose Battery":
-    //   setBattery(value);
-    //   break;
     case "Water Pipe":
       setWaterPipe(value);
       break;
@@ -67,7 +64,7 @@ function setBattery(value) {
     })
     .then((item) => {
       setInitialAttributeValue();
-          });
+    });
 }
 
 async function setWirePosition(value) {
@@ -102,6 +99,10 @@ async function setWirePosition(value) {
       meshToShow = "A_Reverse_Assembly";
       break;
 
+    case "C Alternative":
+      meshToShow = "C_Alternate_Assembly";
+      break;
+
     default:
       meshToShow = "A_Assembly";
       break;
@@ -117,6 +118,7 @@ async function setWirePosition(value) {
     "A_B_Assembly",
     "D_Assembly",
     "C_Assembly",
+    "C_Alternate_Assembly",
   ];
   const meshesToHide = allMeshes.filter((mesh) => mesh !== meshToShow);
   for (const meshToHide of meshesToHide) {

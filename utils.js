@@ -16,6 +16,7 @@ const batteryList = {
   "76122D-WGRC": "059ea2f1-4d7a-4be2-96af-d438657197e9",
   "66144D-WGRN": "0dbe0e05-fc38-4485-8039-41b86bf5b2cd",
   "70433D-WGRN":"4245baaa-534e-4f85-af69-5e847986f694",
+  "70436D-WGRN":"6338701e-dae8-4c56-8ec8-f09882ffd76f",
 
   //Loadhog
   "97566L-WGRN": "e697ce44-7363-4397-9384-b0b4b0b38473",
