@@ -28,6 +28,7 @@ function setInitialAttributeValue() {
   setSocketColor("Yellow");
   setTrayColor("Grey");
   setBoxDimension("Off");
+  OffsetFunction();
 }
 
 async function setAttributeValue(attributeName, value) {
@@ -199,6 +200,58 @@ async function setScene(mesh, value) {
       property: "visible",
     },
     value
+  );
+}
+
+async function OffsetFunction() {
+  const model = playerObj.configurator.appliedConfiguration["Choose Battery"];
+  const assetInstance = await playerObj.getAssetInstance({
+    id: model,
+    plug: "Proxy",
+    property: "asset",
+  });
+
+  const boxDimensionsNodeId = api.scene.findNode({
+    from: assetInstance,
+    name: "Box Dimensions",
+  });
+
+  api.scene.set(
+    {
+      from: assetInstance,
+      id: boxDimensionsNodeId,
+      plug: "Measurement",
+      property: "xOffset",
+    },
+    {
+      x: 0,
+      y: 2,
+      z: 0,
+    }
+  );
+
+  api.scene.set(
+    {
+      from: assetInstance,
+      id: boxDimensionsNodeId,
+      plug: "Measurement",
+      property: "yOffset",
+    },
+    { x: 0, y: 0, z: 2 }
+  );
+
+  api.scene.set(
+    {
+      from: assetInstance,
+      id: boxDimensionsNodeId,
+      plug: "Measurement",
+      property: "zOffset",
+    },
+    {
+      x: 0,
+      y: 2,
+      z: 0,
+    }
   );
 }
 
