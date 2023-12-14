@@ -14,55 +14,55 @@ async function loadThreekitPlayer(name) {
       showAR: true,
     })
     .then(async (api) => {
-      window.api = api;
-      window.configurator = await api.getConfigurator();
-      playerObj = api.enableApi("player");
-      setInitialAttributeValue();
-    });
-}
+    window.api = api;
+    window.configurator = await api.getConfigurator();
+    playerObj = api.enableApi("player");
+    setInitialAttributeValue();
+  });
+  }
 
 function setInitialAttributeValue() {
-  setWirePosition("A");
-  setWaterPipe("On");
-  setTrayCover("Off");
-  setSocketColor("Yellow");
-  setTrayColor("Grey");
-  setBoxDimension("Off");
-  OffsetFunction();
+setWirePosition("A");
+setWaterPipe("On");
+setTrayCover("Off");
+setSocketColor("Yellow");
+setTrayColor("Grey");
+setBoxDimension("Off");
+OffsetFunction();
 }
 
 async function setAttributeValue(attributeName, value) {
-  switch (attributeName) {
-    case "Water Pipe":
-      setWaterPipe(value);
-      break;
-    case "Tray Cover":
-      setTrayCover(value);
-      break;
-    case "Wire Position":
-      setWirePosition(value);
-      break;
-    case "Socket Color":
-      setSocketColor(value);
-      break;
-    case "Tray Color":
-      setTrayColor(value);
-      break;
-    case "Box Dimension":
-      setBoxDimension(value);
-      break;
-  }
+      switch (attributeName) {
+      case "Water Pipe":
+        setWaterPipe(value);
+        break;
+      case "Tray Cover":
+        setTrayCover(value);
+        break;
+      case "Wire Position":
+        setWirePosition(value);
+        break;
+      case "Socket Color":
+        setSocketColor(value);
+        break;
+      case "Tray Color":
+        setTrayColor(value);
+        break;
+      case "Box Dimension":
+        setBoxDimension(value);
+        break;
+      }
 }
 
 function setBattery(value) {
-  let assetId = getBatteryId(value);
-
+      let assetId = getBatteryId(value);
+    
   configurator
     .setConfiguration({
       "Choose Battery": {
         assetId: assetId,
       },
-    })
+})
     .then((item) => {
       setInitialAttributeValue();
     });
@@ -203,6 +203,53 @@ async function setScene(mesh, value) {
   );
 }
 
+async function setSocketColor(val) {
+  try {
+    let attributeColor = "Color";
+    let value = val;
+    switch (val) {
+      case "Red":
+        value = "#b81718";
+        break;
+      case "Yellow":
+        value = "#F9F642";
+        break;
+    }
+
+    console.log("val>>>>>>>>>>", val, "value>>>>>>>>>>>", value);
+
+    const model = playerObj.configurator.appliedConfiguration["Choose Battery"];
+    var assetInstance = await playerObj.getAssetInstance({
+      id: model,
+      plug: "Proxy",
+      property: "asset",
+    });
+
+    console.log("assetInstance>>>>>>>>>", assetInstance);
+    configurator = await playerObj.getConfiguratorInstance({
+      from: assetInstance,
+      name: "A_Assembly_plug",
+      plug: "Material",
+      property: "reference",
+    });
+
+    console.log(
+      "configurator>>>>>>>>>>>>",
+      configurator)
+  //  var setsocketcolor = configurator.setConfiguration({ [attributeColor]: value });
+    
+    console.log(
+      
+      "ss>>>>>>>>>>>>>",
+      setsocketcolor,
+      "{[attributeColor] : value}.>>>>>>>>>>>>>",
+      { [attributeColor]: value }
+    );
+  } catch (error) {
+    console.log("socketColor:", error);
+  }
+}
+
 async function OffsetFunction() {
   const model = playerObj.configurator.appliedConfiguration["Choose Battery"];
   const assetInstance = await playerObj.getAssetInstance({
@@ -276,23 +323,25 @@ function setTrayColor(color) {
   });
 }
 
-function setSocketColor(value) {
-  let assetId;
-  switch (value) {
-    case "Yellow":
-      assetId = "5d9d84fa-5706-4959-86d9-8e76f5007371";
-      break;
-    case "Red":
-      assetId = "ea3e06df-3451-46f6-975f-af4b877dd854";
-      break;
-    default:
-      assetId = "5d9d84fa-5706-4959-86d9-8e76f5007371";
-      break;
-  }
 
-  configurator.setConfiguration({
-    "Socket Color": {
-      assetId: assetId,
-    },
-  });
-}
+// older-version setcolor by assetid
+// function setSocketColor(value) {
+//   let assetId;
+//   switch (value) {
+//     case "Yellow":
+//       assetId = "5d9d84fa-5706-4959-86d9-8e76f5007371";
+//       break;
+//     case "Red":
+//       assetId = "ea3e06df-3451-46f6-975f-af4b877dd854";
+//       break;
+//     default:
+//       assetId = "5d9d84fa-5706-4959-86d9-8e76f5007371";
+//       break;
+//   }
+
+//   configurator.setConfiguration({
+//     "Socket Color": {
+//       assetId: assetId,
+//     },
+//   });
+// }

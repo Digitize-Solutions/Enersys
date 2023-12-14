@@ -39,9 +39,9 @@
             onchange="handleBatteryChange(this.value); setBattery(this.value);"
           >
             <option value="503743D-WGRN">503743D-WGRN</option>
-            <option value="503744D-WGRN">503744D-WGRN</option>
+            <!-- <option value="503744D-WGRN">503744D-WGRN</option> -->
             <option value="503752D-WGRN">503752D-WGRN</option>
-            <option value="76121D-WGRN">76121D-WGRN</option>
+            <!-- <option value="76121D-WGRN">76121D-WGRN</option> -->
             <option value="503736D-WGRC">503736D-WGRC</option>
             <option value="504944D-WGRN">504944D-WGRN</option>
             <option value="76122D-WGRC">76122D-WGRC</option>
@@ -50,6 +50,8 @@
             <option value="67167D-WGRN">67167D-WGRN</option>
             <option value="70433D-WGRN">70433D-WGRN</option>
             <option value="70436D-WGRN">70436D-WGRN</option>
+            <option value="511394D-WGRN">511394D-WGRN</option>
+            <option value="68666D-WGRN">68666D-WGRN</option>
           </select>
         </div>
 
@@ -244,6 +246,7 @@
           "76121D-WGRN",
           "70433D-WGRN",
           "70436D-WGRN",
+          "68666D-WGRN",
         ];
 
         // Check if the selected battery is in the list for Tray Cover
@@ -309,7 +312,9 @@
           selectedValue.includes("503744D-WGRN") ||
           selectedValue.includes("504944D-WGRN") ||
           selectedValue.includes("76122D-WGRC") ||
-          selectedValue.includes("506910D-WGRN")
+          selectedValue.includes("506910D-WGRN") ||
+          selectedValue.includes("511394D-WGRN")||
+          selectedValue.includes("68666D-WGRN")
         ) {
           let displayBlockEleArr = ["A", "B", "C", "AB", "D", "A/B"];
           displayBlockEleArr.forEach((item) => {
