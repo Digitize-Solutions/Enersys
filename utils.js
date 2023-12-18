@@ -34,3 +34,16 @@ function getFamilyId(name) {
 function getBatteryId(name) {
   return batteryList[name] || "";
 }
+
+
+const initialValues ={
+
+  'Wire Position':'A',
+  'Tray Color':'Grey',
+  'Water Pipe':'On',
+  'Tray Cover':'Off',
+  'Socket Color':'Yellow',
+  'Box Dimension':'Off',
+
+}
+

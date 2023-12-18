@@ -21,15 +21,14 @@ async function loadThreekitPlayer(name) {
   });
   }
 
-function setInitialAttributeValue() {
-setWirePosition("A");
-setWaterPipe("On");
-setTrayCover("Off");
-//setSocketColor("Yellow");
-setTrayColor("Grey");
-setBoxDimension("Off");
-OffsetFunction();
-}
+  function setInitialAttributeValue() {
+    for (const attributeName in initialValues) {
+      const value = initialValues[attributeName];
+      setAttributeValue(attributeName, value);
+    }
+
+    OffsetFunction();
+  }
 
 async function setAttributeValue(attributeName, value) {
       switch (attributeName) {
@@ -120,6 +119,7 @@ async function setWirePosition(value) {
     "D_Assembly",
     "C_Assembly",
     "C_Alternate_Assembly",
+    // "CD_Center_Assembly",
   ];
   const meshesToHide = allMeshes.filter((mesh) => mesh !== meshToShow);
   for (const meshToHide of meshesToHide) {
@@ -189,7 +189,7 @@ async function setScene(mesh, value) {
     property: "asset",
   });
   window.assetInstance = assetInstance;
-  api.scene.set(
+    api.scene.set(
     {
       from: assetInstance,
       id: api.scene.findNode({
@@ -203,52 +203,58 @@ async function setScene(mesh, value) {
   );
 }
 
-async function setSocketColor(val) {
-  try {
-    let attributeColor = "Color";
-    let value = val;
-    switch (val) {
-      case "Red":
-        value = "#b81718";
-        break;
-      case "Yellow":
-        value = "#F9F642";
-        break;
-    }
+// const allPlugMeshes = [
+//   "A_Assembly_plug",
+//   "B_Assembly_plug",
+//   "D_Assembly_plug",
+//   "C_Assembly_plug",
+//   "AB_Assembly_plug",
+//   "A_Reverse_plug",
+//   "C_D_Assembly_plug",
+//   "CD_Assembly_plug",
+//   "A_B_Assembly_plug",
+//   "C_Alternate_Assembly_plug",
+//   "CD_Center_Assembly_plug",
+// ];
 
-   // console.log("val>>>>>>>>>>", val, "value>>>>>>>>>>>", value);
+// async function setSocketColor(val) {
+//   try {
+//     let attributeColor = "Socket_Color";
+//     let value=val;
+//     switch (val) {
+//       case "Red":
+//         value = "#b81718";
+//         break;
+//       case "Yellow":
+//         value = "#F9F642";
+//         break;
+//     }
 
-    const model = playerObj.configurator.appliedConfiguration["Choose Battery"];
-    var assetInstance = await playerObj.getAssetInstance({
-      id: model,
-      plug: "Proxy",
-      property: "asset",
-    });
+//    // console.log("val>>>>>>>>>>", val, "value>>>>>>>>>>>", value);
 
-    //console.log("assetInstance>>>>>>>>>", assetInstance);
-    configurator = await playerObj.getConfiguratorInstance({
-      from: assetInstance,
-      name: "A_Assembly_plug",
-      plug: "Material",
-      property: "reference",
-    });
+//     const model = playerObj.configurator.appliedConfiguration["Choose Battery"];
+//     var assetInstance = await playerObj.getAssetInstance({
+//       id: model,
+//       plug: "Proxy",
+//       property: "asset",
+//     });
 
-    // console.log(
-    //   "configurator>>>>>>>>>>>>",
-    //   configurator)
-  //  var setsocketcolor = configurator.setConfiguration({ [attributeColor]: value });
-    
-    // console.log(
-      
-    //   "ss>>>>>>>>>>>>>",
-    //   setsocketcolor,
-    //   "{[attributeColor] : value}.>>>>>>>>>>>>>",
-    //   { [attributeColor]: value }
-    // );
-  } catch (error) {
-    console.log("socketColor:", error);
-  }
-}
+//     for (const meshName of allPlugMeshes) {
+//       configurator = await playerObj.getConfiguratorInstance({
+//         from: assetInstance,
+//         name: meshName,
+//         plug: "Material",
+//         property: "reference",
+//       });
+
+//       await configurator.setConfiguration({ [attributeColor]: value });
+//     }
+
+   
+//   } catch (error) {
+//     console.log("socketColor:", error);
+//   }
+// }
 
 async function OffsetFunction() {
   const model = playerObj.configurator.appliedConfiguration["Choose Battery"];
@@ -325,23 +331,23 @@ function setTrayColor(color) {
 
 
 // older-version setcolor by assetid
-// function setSocketColor(value) {
-//   let assetId;
-//   switch (value) {
-//     case "Yellow":
-//       assetId = "5d9d84fa-5706-4959-86d9-8e76f5007371";
-//       break;
-//     case "Red":
-//       assetId = "ea3e06df-3451-46f6-975f-af4b877dd854";
-//       break;
-//     default:
-//       assetId = "5d9d84fa-5706-4959-86d9-8e76f5007371";
-//       break;
-//   }
+function setSocketColor(value) {
+  let assetId;
+  switch (value) {
+    case "Yellow":
+      assetId = "5d9d84fa-5706-4959-86d9-8e76f5007371";
+      break;
+    case "Red":
+      assetId = "ea3e06df-3451-46f6-975f-af4b877dd854";
+      break;
+    default:
+      assetId = "5d9d84fa-5706-4959-86d9-8e76f5007371";
+      break;
+  }
 
-//   configurator.setConfiguration({
-//     "Socket Color": {
-//       assetId: assetId,
-//     },
-//   });
-// }
+  configurator.setConfiguration({
+    "Socket Color": {
+      assetId: assetId,
+    },
+  });
+}
