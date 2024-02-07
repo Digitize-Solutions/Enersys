@@ -103,6 +103,10 @@ async function setWirePosition(value) {
       meshToShow = "C_Alternate_Assembly";
       break;
 
+      case "CD Center":
+        meshToShow = "CD_Center_Assembly";
+        break;
+
     default:
       meshToShow = "A_Assembly";
       break;
@@ -119,7 +123,7 @@ async function setWirePosition(value) {
     "D_Assembly",
     "C_Assembly",
     "C_Alternate_Assembly",
-    // "CD_Center_Assembly",
+    "CD_Center_Assembly",
   ];
   const meshesToHide = allMeshes.filter((mesh) => mesh !== meshToShow);
   for (const meshToHide of meshesToHide) {
@@ -203,58 +207,6 @@ async function setScene(mesh, value) {
   );
 }
 
-// const allPlugMeshes = [
-//   "A_Assembly_plug",
-//   "B_Assembly_plug",
-//   "D_Assembly_plug",
-//   "C_Assembly_plug",
-//   "AB_Assembly_plug",
-//   "A_Reverse_plug",
-//   "C_D_Assembly_plug",
-//   "CD_Assembly_plug",
-//   "A_B_Assembly_plug",
-//   "C_Alternate_Assembly_plug",
-//   "CD_Center_Assembly_plug",
-// ];
-
-// async function setSocketColor(val) {
-//   try {
-//     let attributeColor = "Socket_Color";
-//     let value=val;
-//     switch (val) {
-//       case "Red":
-//         value = "#b81718";
-//         break;
-//       case "Yellow":
-//         value = "#F9F642";
-//         break;
-//     }
-
-//    // console.log("val>>>>>>>>>>", val, "value>>>>>>>>>>>", value);
-
-//     const model = playerObj.configurator.appliedConfiguration["Choose Battery"];
-//     var assetInstance = await playerObj.getAssetInstance({
-//       id: model,
-//       plug: "Proxy",
-//       property: "asset",
-//     });
-
-//     for (const meshName of allPlugMeshes) {
-//       configurator = await playerObj.getConfiguratorInstance({
-//         from: assetInstance,
-//         name: meshName,
-//         plug: "Material",
-//         property: "reference",
-//       });
-
-//       await configurator.setConfiguration({ [attributeColor]: value });
-//     }
-
-   
-//   } catch (error) {
-//     console.log("socketColor:", error);
-//   }
-// }
 
 async function OffsetFunction() {
   const model = playerObj.configurator.appliedConfiguration["Choose Battery"];

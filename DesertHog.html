@@ -52,6 +52,16 @@
             <option value="70436D-WGRN">70436D-WGRN</option>
             <option value="511394D-WGRN">511394D-WGRN</option>
             <option value="68666D-WGRN">68666D-WGRN</option>
+
+            <option value="501674D-WGRN">501674D-WGRN</option>
+            <option value="66584D-WGRN">66584D-WGRN</option>
+            <option value="69855D-WGRN">69855D-WGRN</option>
+            <option value="70673D-WGRC">70673D-WGRC</option>
+            <option value="67715D-WGRN">67715D-WGRN</option>
+            <option value="71528D-WGRN">71528D-WGRN</option>
+            <option value="74691D-WGRN">74691D-WGRN</option>
+            <option value="74028D-WGRC">74028D-WGRC</option>
+            <option value="88147D-WGRN">88147D-WGRN</option>
           </select>
         </div>
 
@@ -131,6 +141,13 @@
           >
             Reverse A
           </button>
+          <button
+          class="mui-btn mui-btn--accent"
+          onclick="setAttributeValue('Wire Position','CD Center')"
+          id="CD Center"
+        >
+        CD Center
+        </button>
           <br />
         </div>
         <div style="width: 55%; margin-left: 22%" class="mui-panel">
@@ -229,113 +246,113 @@
       function setInitialBatteryValue() {
         var batteryDropdown = document.getElementById("batteryDropdown");
         batteryDropdown.value = "503743D-WGRN";
-        handleBatteryChange("503743D-WGRN");
+       // handleBatteryChange("503743D-WGRN");
       }
 
-      function handleBatteryChange(selectedValue) {
-        var trayCoverDiv = document.getElementById("trayCoverDiv");
-        var wirePositionDiv = document.getElementById("wirePositionDiv");
-        var wirePositionButtons =
-          wirePositionDiv.getElementsByTagName("button");
+      // function handleBatteryChange(selectedValue) {
+      //   var trayCoverDiv = document.getElementById("trayCoverDiv");
+      //   var wirePositionDiv = document.getElementById("wirePositionDiv");
+      //   var wirePositionButtons =
+      //     wirePositionDiv.getElementsByTagName("button");
 
-        // List of battery values that should show the Tray Cover
-        const showTrayCoverForBatteries = [
-          "503736D-WGRC",
-          "76122D-WGRC",
-          "66144D-WGRN",
-          "76121D-WGRN",
-          "70433D-WGRN",
-          "70436D-WGRN",
-          "68666D-WGRN",
-        ];
+      //   // List of battery values that should show the Tray Cover
+      //   const showTrayCoverForBatteries = [
+      //     "503736D-WGRC",
+      //     "76122D-WGRC",
+      //     "66144D-WGRN",
+      //     "76121D-WGRN",
+      //     "70433D-WGRN",
+      //     "70436D-WGRN",
+      //     "68666D-WGRN",
+      //   ];
 
-        // Check if the selected battery is in the list for Tray Cover
-        if (showTrayCoverForBatteries.includes(selectedValue)) {
-          trayCoverDiv.style.display = "block";
-        } else {
-          trayCoverDiv.style.display = "none";
-        }
+      //   // Check if the selected battery is in the list for Tray Cover
+      //   if (showTrayCoverForBatteries.includes(selectedValue)) {
+      //     trayCoverDiv.style.display = "block";
+      //   } else {
+      //     trayCoverDiv.style.display = "none";
+      //   }
 
-        // Hide all wire position buttons
-        for (var i = 0; i < wirePositionButtons.length; i++) {
-          wirePositionButtons[i].style.display = "none";
-        }
+      //   // Hide all wire position buttons
+      //   for (var i = 0; i < wirePositionButtons.length; i++) {
+      //     wirePositionButtons[i].style.display = "none";
+      //   }
 
-        // Show wire position buttons based on the selected battery "A", "B", "C", "AB", "D", "C/D", "A Reverse", "A/B"
-        if (
-          selectedValue.includes("503752D-WGRN") ||
-          selectedValue.includes("66144D-WGRN") ||
-          selectedValue.includes("67167D-WGRN") ||
-          selectedValue.includes("70433D-WGRN") ||
-          selectedValue.includes("70436D-WGRN") ||
-          selectedValue.includes("76121D-WGRN")
-        ) {
-          let displayBlockEleArr = [
-            "A",
-            "B",
-            "C",
-            "AB",
-            "D",
-            "C/D",
-            "A Reverse",
-            "A/B",
-          ];
-          displayBlockEleArr.forEach((item) => {
-            let tmpEle = document.getElementById(item);
+      //   // Show wire position buttons based on the selected battery "A", "B", "C", "AB", "D", "C/D", "A Reverse", "A/B"
+      //   if (
+      //     selectedValue.includes("503752D-WGRN") ||
+      //     selectedValue.includes("66144D-WGRN") ||
+      //     selectedValue.includes("67167D-WGRN") ||
+      //     selectedValue.includes("70433D-WGRN") ||
+      //     selectedValue.includes("70436D-WGRN") ||
+      //     selectedValue.includes("76121D-WGRN")
+      //   ) {
+      //     let displayBlockEleArr = [
+      //       "A",
+      //       "B",
+      //       "C",
+      //       "AB",
+      //       "D",
+      //       "C/D",
+      //       "A Reverse",
+      //       "A/B",
+      //     ];
+      //     displayBlockEleArr.forEach((item) => {
+      //       let tmpEle = document.getElementById(item);
 
-            tmpEle.style.display = "inline-block";
-          });
-        }
+      //       tmpEle.style.display = "inline-block";
+      //     });
+      //   }
 
-        // Show wire position buttons based on the selected battery   "A", "B", "C", "D", "AB", "A/B", "CD", "C Alternative"
-        if (selectedValue.includes("503736D-WGRC")) {
-          let displayBlockEleArr = [
-            "A",
-            "B",
-            "C",
-            "D",
-            "AB",
-            "A/B",
-            "CD",
-            "C Alternative",
-          ];
-          displayBlockEleArr.forEach((item) => {
-            let tmpEle = document.getElementById(item);
+      //   // Show wire position buttons based on the selected battery   "A", "B", "C", "D", "AB", "A/B", "CD", "C Alternative"
+      //   if (selectedValue.includes("503736D-WGRC")) {
+      //     let displayBlockEleArr = [
+      //       "A",
+      //       "B",
+      //       "C",
+      //       "D",
+      //       "AB",
+      //       "A/B",
+      //       "CD",
+      //       "C Alternative",
+      //     ];
+      //     displayBlockEleArr.forEach((item) => {
+      //       let tmpEle = document.getElementById(item);
 
-            tmpEle.style.display = "inline-block";
-          });
-        }
+      //       tmpEle.style.display = "inline-block";
+      //     });
+      //   }
 
-        // Show wire position buttons based on the selected battery   "A", "B", "C", "AB", "D", "A/B"
-        if (
-          selectedValue.includes("503743D-WGRN") ||
-          selectedValue.includes("503744D-WGRN") ||
-          selectedValue.includes("504944D-WGRN") ||
-          selectedValue.includes("76122D-WGRC") ||
-          selectedValue.includes("506910D-WGRN") ||
-          selectedValue.includes("511394D-WGRN") ||
-          selectedValue.includes("68666D-WGRN")
-        ) {
-          let displayBlockEleArr = ["A", "B", "C", "AB", "D", "A/B"];
-          displayBlockEleArr.forEach((item) => {
-            let tmpEle = document.getElementById(item);
+      //   // Show wire position buttons based on the selected battery   "A", "B", "C", "AB", "D", "A/B"
+      //   if (
+      //     selectedValue.includes("503743D-WGRN") ||
+      //     selectedValue.includes("503744D-WGRN") ||
+      //     selectedValue.includes("504944D-WGRN") ||
+      //     selectedValue.includes("76122D-WGRC") ||
+      //     selectedValue.includes("506910D-WGRN") ||
+      //     selectedValue.includes("511394D-WGRN") ||
+      //     selectedValue.includes("68666D-WGRN")
+      //   ) {
+      //     let displayBlockEleArr = ["A", "B", "C", "AB", "D", "A/B"];
+      //     displayBlockEleArr.forEach((item) => {
+      //       let tmpEle = document.getElementById(item);
 
-            tmpEle.style.display = "inline-block";
-          });
-        }
-      }
+      //       tmpEle.style.display = "inline-block";
+      //     });
+      //   }
+      // }
 
-      function showWirePositionOptions(optionsToShow) {
-        var wirePositionDiv = document.getElementById("wirePositionDiv");
-        for (var i = 0; i < optionsToShow.length; i++) {
-          var buttonToShow = wirePositionDiv.querySelector([
-            (onclick *= "${optionsToShow[i]}"),
-          ]);
-          if (buttonToShow) {
-            buttonToShow.style.display = "inline-block";
-          }
-        }
-      }
+      // function showWirePositionOptions(optionsToShow) {
+      //   var wirePositionDiv = document.getElementById("wirePositionDiv");
+      //   for (var i = 0; i < optionsToShow.length; i++) {
+      //     var buttonToShow = wirePositionDiv.querySelector([
+      //       (onclick *= "${optionsToShow[i]}"),
+      //     ]);
+      //     if (buttonToShow) {
+      //       buttonToShow.style.display = "inline-block";
+      //     }
+      //   }
+      // }
 
       window.onload = setInitialBatteryValue;
     </script>
