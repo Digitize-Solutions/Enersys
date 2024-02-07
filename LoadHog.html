@@ -239,14 +239,14 @@
     function setInitialBatteryValue() {
       var batteryDropdown = document.getElementById("batteryDropdown");
       batteryDropdown.value = "97566L-WGRN";
-    //  handleBatteryChange("97566L-WGRN");
+     handleBatteryChange("97566L-WGRN");
     }
-    // function handleBatteryChange(selectedValue) {
-    //   var trayCoverDiv = document.getElementById("trayCoverDiv");
-    //   var wirePositionDiv = document.getElementById("wirePositionDiv");
-    //   var wirePositionButtons = wirePositionDiv.getElementsByTagName("button");
+    function handleBatteryChange(selectedValue) {
+      var trayCoverDiv = document.getElementById("trayCoverDiv");
+      var wirePositionDiv = document.getElementById("wirePositionDiv");
+      var wirePositionButtons = wirePositionDiv.getElementsByTagName("button");
 
-    //   // List of battery values that should show the Tray Cover
+      // List of battery values that should show the Tray Cover
     //   const showTrayCoverForBatteries = [
     //     "503736D-WGRC",
     //     "76122D-WGRC",
@@ -343,7 +343,7 @@
     //       buttonToShow.style.display = "inline-block";
     //     }
     //   }
-    // }
+    }
 
     window.onload = setInitialBatteryValue;
   </script>
