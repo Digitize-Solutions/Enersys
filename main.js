@@ -1,5 +1,5 @@
-//const authToken = "9b5ed056-d619-47db-a8a8-1e7fad3f5a91"; // localhost
-const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a";// github
+const authToken = "9b5ed056-d619-47db-a8a8-1e7fad3f5a91"; // localhost
+//const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a";// github
 var playerObj;
 async function loadThreekitPlayer(name) {
   const tmpAssetId = getFamilyId(name);
@@ -12,6 +12,11 @@ async function loadThreekitPlayer(name) {
       initialConfiguration: {},
       showConfigurator: false,
       showAR: true,
+      cache: {
+        maxAge: 31536000, //milliseconds
+        scope: "v1.0"
+       },
+      publishStage:'published',
     })
     .then(async (api) => {
     window.api = api;
@@ -260,20 +265,8 @@ async function OffsetFunction() {
   );
 }
 
-function setTrayColor(color) {
-  let assetId;
-  switch (color) {
-    case "Grey":
-      assetId = "cf2f8cd0-d70a-448a-8ec9-fef0c9c0614e";
-      break;
-    case "Blue":
-      assetId = "404a924d-e40e-4fd1-8ed1-b4c86a4bdace";
-      break;
-    default:
-      assetId = "cf2f8cd0-d70a-448a-8ec9-fef0c9c0614e";
-      break;
-  }
-
+function setTrayColor(value) {
+  let assetId = TrayColorNameId(value);
   configurator.setConfiguration({
     "Tray Color": {
       assetId: assetId,
@@ -282,21 +275,8 @@ function setTrayColor(color) {
 }
 
 
-// older-version setcolor by assetid
 function setSocketColor(value) {
-  let assetId;
-  switch (value) {
-    case "Yellow":
-      assetId = "5d9d84fa-5706-4959-86d9-8e76f5007371";
-      break;
-    case "Red":
-      assetId = "ea3e06df-3451-46f6-975f-af4b877dd854";
-      break;
-    default:
-      assetId = "5d9d84fa-5706-4959-86d9-8e76f5007371";
-      break;
-  }
-
+  let assetId = SocketColorNameId(value);
   configurator.setConfiguration({
     "Socket Color": {
       assetId: assetId,
