@@ -2,7 +2,7 @@
 const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a";// github
 var playerObj;
 async function loadThreekitPlayer(name) {
-  const tmpAssetId = getFamilyId(name);
+  const tmpAssetId = getFamilyId(name); //get AssetID of the configurator by the Family Name
 
   window
     .threekitPlayer({
