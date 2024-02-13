@@ -2,13 +2,13 @@
 const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a";// github
 var playerObj;
 async function loadThreekitPlayer(name) {
-  const tmpAssetId = getFamilyId(name); //get AssetID of the configurator by the Family Name
+  const ConfigAssetId = getFamilyId(name); //get AssetID of the configurator by the Family Name
 
   window
     .threekitPlayer({
       authToken,
       el: document.getElementById("playerContainer"),
-      assetId: tmpAssetId,
+      assetId: ConfigAssetId,
       initialConfiguration: {},
       showConfigurator: false,
       showAR: true,
@@ -236,7 +236,7 @@ async function OffsetFunction() {
     {
       x: 0,
       y: 2,
-      z: 0,
+      z: 2,
     }
   );
 
@@ -247,7 +247,7 @@ async function OffsetFunction() {
       plug: "Measurement",
       property: "yOffset",
     },
-    { x: 0, y: 0, z: 2 }
+    { x: 2, y: 0, z: 2 }
   );
 
   api.scene.set(
@@ -258,7 +258,7 @@ async function OffsetFunction() {
       property: "zOffset",
     },
     {
-      x: 0,
+      x: 2,
       y: 2,
       z: 0,
     }
