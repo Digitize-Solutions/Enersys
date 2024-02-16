@@ -1,6 +1,8 @@
 const familyList = {
   DesertHog: "217d359f-1f2e-4703-9f74-8a6c47efb632",
   LoadHog: "e7fb88c1-972b-4c2a-999c-e1c4c5528c0e",
+  Waterless: "86ee4623-e10e-41c7-877c-ac817d82ee69",
+  PerfectPlus:"c8fda43e-6163-445c-bd11-ff9cb8487475",
 };
 
 function getFamilyId(name) {
@@ -47,6 +49,13 @@ const batteryList = {
   "97592L-WGRN":  "5d7644f1-8f52-406e-bc3d-d7bd769ac318",
   "503736L-WGRC": "02387ee4-c222-4776-845e-f81480387157",
   "503754L-WGRN": "f20b06c7-0885-4889-b787-737629b40360",
+
+  //Waterless
+  "4592914CBC": "79156a2c-e656-4477-8285-fa2e8f67e024",
+
+   //PerfectPlus
+   "3409885CBC": "c842373b-49b0-46e9-9a43-ad4965382d67",
+   "4600176CBC":"737ca8b7-6e1a-4336-a590-a139fbdf6d4c",
 };
 
 function getBatteryId(name) {
@@ -76,6 +85,26 @@ function SocketColorNameId(name) {
 }
 
 
+
+const batteryLabelName = {
+  "Hawker Perfect Plus": "752baa0f-0a4e-40cb-b0d5-c1804f37d697",
+  "Still"   : "f36813bc-72c7-46ac-8914-2bb8e240e4af",
+  "Fiamm Perfect Plus"   : "e3ec1cb6-9805-45f5-ac79-bcf2e7c9b0c7",
+};
+
+
+function batteryLabelNameId(name) {
+  return batteryLabelName[name] || "";
+}
+
+
+
+
+
+
+
+
+
 const initialValues = {
   "Wire Position": "A",
   "Tray Color": "Grey",
@@ -83,4 +112,5 @@ const initialValues = {
   "Tray Cover": "Off",
   "Socket Color": "Yellow",
   "Box Dimension": "Off",
+  "Battery Label": "Hawker Perfect Plus",
 };
