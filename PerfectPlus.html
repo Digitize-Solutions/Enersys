@@ -35,7 +35,7 @@
         <div style="width: 55%; margin-left: 22%" class="mui-panel">
           <label for="batteryDropdown">Choose Battery:</label>
           <select
-            value="97566L-WGRN"
+            value="3409885CBC"
             id="batteryDropdown"
             class="mui-btn mui-btn--accent"
             onchange="
@@ -44,7 +44,15 @@
           >
             <option value="3409885CBC">3409885CBC</option>
             <option value="4600176CBC">4600176CBC</option>
-            
+            <option value="4590257CBC">4590257CBC</option>
+            <option value="4587593CBC">4587593CBC</option>
+            <option value="3418227CBC">3418227CBC</option>
+            <option value="4600666CBC">4600666CBC</option>
+            <option value="4603352CBC">4603352CBC</option>
+            <option value="4590654CBC">4590654CBC</option>
+            <option value="4588557CBC">4588557CBC</option>
+            <option value="4588776CBC">4588776CBC</option>
+            <option value="3427534CBC">3427534CBC</option>
           </select>
         </div>
         <div style="width: 55%; margin-left: 22%" class="mui-panel">
@@ -57,11 +65,16 @@
           >
             <option value="Hawker Perfect Plus">Hawker Perfect Plus</option>
             <option value="Still">Still</option>
-            <option value="Fiamm Perfect Plus">  Fiamm Perfect Plus</option>
-            
+            <!-- <option value="Fiamm Perfect Plus">Fiamm Perfect Plus</option>
+            <option value="Jungheinrich">Jungheinrich</option>
+            <option value="Oerlikon Perfect Plus">Oerlikon Perfect Plus</option>
+            <option value="Oldham Perfect Plus">Oldham Perfect Plus</option>
+            <option value="KION-Still">KION-Still</option>
+            <option value="KION-Linde">KION-Linde</option>
+            <option value="KION-Fenwick">KION-Fenwick</option> -->
+            <option value="Neutral">Neutral</option>
           </select>
         </div>
-       
 
         <!-- <div style="width: 55%; margin-left: 22%" class="mui-panel">
           Tray Color
@@ -265,4 +278,13 @@
 
     window.onload = setInitialBatteryValue;
   </script> -->
+  <script>
+    window.addEventListener("load", function () {
+      const batteryLabelDropdown = document.getElementById(
+        "batteryLabelDropdown"
+      );
+      const newValues = Object.assign({}, initialValues);
+      newValues["Battery Label"] = batteryLabelDropdown.value;
+    });
+  </script>
 </html>

@@ -12,10 +12,10 @@ async function loadThreekitPlayer(name) {
       initialConfiguration: {},
       showConfigurator: false,
       showAR: true,
-      cache: {
-        maxAge: 31536000, //milliseconds
-        scope: "v1.0"
-       },
+      // cache: {
+      //   maxAge: 31536000, //milliseconds
+      //   scope: "v1.0"
+      //  },
       publishStage:'published',
     })
     .then(async (api) => {
@@ -289,7 +289,6 @@ function setSocketColor(value) {
 
 async function setBatteryLabel(value) {
   let assetId = batteryLabelNameId(value);
-  console.log("assetId",assetId);
   configurator.setConfiguration({
     "Battery Label": {
       assetId: assetId,

@@ -35,7 +35,7 @@
         <div style="width: 55%; margin-left: 22%" class="mui-panel">
           <label for="batteryDropdown">Choose Battery:</label>
           <select
-            value="97566L-WGRN"
+            value="4592914CBC"
             id="batteryDropdown"
             class="mui-btn mui-btn--accent"
             onchange="
@@ -43,11 +43,31 @@
             setBattery(this.value);"
           >
             <option value="4592914CBC">4592914CBC</option>
-            
+            <option value="4592817CBC">4592817CBC</option>
           </select>
         </div>
-
-       
+        <div style="width: 55%; margin-left: 22%" class="mui-panel">
+          <label for="batteryDropdown">Battery Label:</label>
+          <select
+            value="Hawker Water Less"
+            id="batteryLabelDropdown"
+            class="mui-btn mui-btn--accent"
+            onchange="setAttributeValue('Battery Label',this.value)"
+          >
+            <option value="Hawker Water Less">Hawker Water Less</option>
+            <!-- <option value="KION-Still">KION-Still</option>
+            <option value="Fiamm Water Less">Fiamm Water Less</option>
+            <option value="Jungheinrich Water Less">
+              Jungheinrich Water Less
+            </option>
+            <option value="Oerlikon Water Less">Oerlikon Water Less</option>
+            <option value="Oldham Water Less">Oldham Water Less</option>
+            <option value="Hawker Water Less 20">Hawker Water Less 20</option>
+            <option value="KION-Linde">KION-Linde</option>
+            <option value="KION-Fenwick">KION-Fenwick</option> -->
+            <option value="Neutral Water Less">Neutral Water Less</option>
+          </select>
+        </div>
 
         <!-- <div style="width: 55%; margin-left: 22%" class="mui-panel">
           Tray Color
@@ -135,8 +155,6 @@
         </div>
       </div>
     </div>
-
-    <script src="main.js"></script>
   </body>
   <script>
     loadThreekitPlayer("Waterless");
@@ -253,4 +271,15 @@
 
     window.onload = setInitialBatteryValue;
   </script> -->
+
+  <script>
+    window.addEventListener("load", function () {
+      const batteryLabelDropdown = document.getElementById(
+        "batteryLabelDropdown"
+      );
+      const newValues = Object.assign({}, initialValues);
+      newValues["Battery Label"] = batteryLabelDropdown.value;
+      console.log(newValues);
+    });
+  </script>
 </html>
