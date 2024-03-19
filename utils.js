@@ -67,6 +67,7 @@ const batteryList = {
   "4588776CBC": "932926e7-6825-40d0-bce2-692746bd4790",
   "3427534CBC": "0a9aa52e-510a-4677-88c0-d200506c4678",
   "4600056CBC":"3714b8a7-b0e0-4a08-96f3-d0bb28e11444",
+  "3565842CBC":"0aa3b5f1-34a7-4409-b736-8a8ae1fd8f0e",
 };
 
 function getBatteryId(name) {
