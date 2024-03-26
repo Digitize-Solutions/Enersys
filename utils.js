@@ -53,6 +53,9 @@ const batteryList = {
   //Waterless
   "4592914CBC": "79156a2c-e656-4477-8285-fa2e8f67e024",
   "4592817CBC": "22055fcf-6e85-4a00-a242-68cb8efbbaa9",
+  "4592493CBC": "f2e457fa-6686-4e48-a1b7-bb39da588a81",
+  "3910707CBC": "64ed7c06-1139-4d51-82b9-1aa55105e574",
+  "4592452CBC": "75793db5-0cc7-4609-b816-9e958f9251f2",
 
   //PerfectPlus
   "3409885CBC": "c842373b-49b0-46e9-9a43-ad4965382d67",
@@ -68,6 +71,7 @@ const batteryList = {
   "3427534CBC": "0a9aa52e-510a-4677-88c0-d200506c4678",
   "4600056CBC":"3714b8a7-b0e0-4a08-96f3-d0bb28e11444",
   "3565842CBC":"0aa3b5f1-34a7-4409-b736-8a8ae1fd8f0e",
+  "4604097CBC":"a434a282-ef18-43c2-ad77-8e80ca0b85ca",
 };
 
 function getBatteryId(name) {

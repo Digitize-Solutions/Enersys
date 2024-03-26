@@ -1,5 +1,5 @@
-//const authToken = "9b5ed056-d619-47db-a8a8-1e7fad3f5a91"; // localhost
-const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a";// github
+const authToken = "9b5ed056-d619-47db-a8a8-1e7fad3f5a91"; // localhost
+//const authToken = "3ec9ad4d-3567-4a6d-9ba3-cda3ea8b6b4a";// github
 var playerObj;
 async function loadThreekitPlayer(name) {
   const ConfigAssetId = getFamilyId(name); //get AssetID of the configurator by the Family Name
