@@ -1,47 +1,24 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
     <title>Sample</title>
-    <style>
-      .containter {
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        justify-items: center;
-      }
-
-      a:link,
-      a:visited {
-        background-color: #f44336;
-        color: white;
-        padding: 14px 25px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        margin: 20px;
-      }
-
-      a:hover,
-      a:active {
-        background-color: red;
-      }
-    </style>
   </head>
   <body>
-    <h1 style="text-align: center">Choose Family</h1>
-    <div class="containter">
-      <a href="DesertHog.html"
-        >DesertHog</a>
-      <a href="LoadHog.html"
-        >LoadHog</a>
-        <a href="Waterless.html"
-        >Waterless</a>
-      <br />
-      <a href="PerfectPlus.html"
-        >PerfectPlus</a>
-      <br />
-    </div>
+    <div id="player" style="height: 600px"></div>
+    <script src="https://preview.threekit.com/app/js/threekit-player.js"></script>
+    <script>
+      window
+        .threekitPlayer({
+          authToken: "9918528e-8be5-4879-9a83-d2a617abe37d",
+          el: document.getElementById("player"),
+          assetId: "ba51a595-368a-4156-b3ef-c0dd95bff6a1",
+          showConfigurator: true,
+          showAR: true,
+        })
+        .then(async function (player) {
+          window.player = player;
+        });
+    </script>
   </body>
 </html>
