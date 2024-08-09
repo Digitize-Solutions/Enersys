@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sample</title>
+    <script src="https://preview.threekit.com/app/js/threekit-player.js"></script>
+    <script src="main.js"></script>
+    <script src="utils.js"></script>
+
+    <style>
+      .containter {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .containterOptions {
+        width: 40vw;
+        display: grid;
+        grid-gap: 15px;
+        grid-auto-rows: min-content;
+      }
+      .mui-panel {
+        width: 55%;
+        margin-left: 22%;
+        background: #efefef;
+        padding: 10px 20px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="containter">
+      <div id="playerContainer" style="height: 600px; width: 60vw"></div>
+      <div class="containterOptions">
+        <div style="width: 55%; margin-left: 22%" class="mui-panel">
+          <label for="batteryDropdown">Choose Battery:</label>
+          <select
+            value="97566L-WGRN"
+            id="batteryDropdown"
+            class="mui-btn mui-btn--accent"
+            onchange="
+            // handleBatteryChange(this.value); 
+            setBattery(this.value);"
+          >
+            <option value="4592914CBC">4592914CBC</option>
+            
+          </select>
+        </div>
+
+       
+
+        <!-- <div style="width: 55%; margin-left: 22%" class="mui-panel">
+          Tray Color
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Tray Color','Grey')"
+          >
+            Grey
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Tray Color','Blue')"
+          >
+            Blue
+          </button>
+          <br />
+        </div> -->
+        <!-- <div style="width: 55%; margin-left: 22%" class="mui-panel">
+          Water Pipe
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Water Pipe','On')"
+          >
+            On
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Water Pipe','Off')"
+          >
+            Off
+          </button>
+          <br />
+        </div> -->
+        <!-- <div
+          style="width: 55%; margin-left: 22%"
+          class="mui-panel"
+          id="trayCoverDiv"
+        >
+          Tray Cover
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Tray Cover','On')"
+          >
+            On
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Tray Cover','Off')"
+          >
+            Off
+          </button>
+          <br />
+        </div> -->
+        <!-- <div style="width: 55%; margin-left: 22%" class="mui-panel">
+          Socket Color
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Socket Color','Yellow')"
+          >
+            Yellow
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Socket Color','Red')"
+          >
+            Red
+          </button>
+          <br />
+        </div> -->
+        <div style="width: 55%; margin-left: 22%" class="mui-panel">
+          Dimension
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Box Dimension','On')"
+          >
+            On
+          </button>
+          <button
+            class="mui-btn mui-btn--accent"
+            onclick="setAttributeValue('Box Dimension','Off')"
+          >
+            Off
+          </button>
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+  <script>
+    loadThreekitPlayer("Waterless");
+  </script>
+
+  <!-- <script>
+    function setInitialBatteryValue() {
+      var batteryDropdown = document.getElementById("batteryDropdown");
+      batteryDropdown.value = "97566L-WGRN";
+      handleBatteryChange("97566L-WGRN");
+    }
+    function handleBatteryChange(selectedValue) {
+      var trayCoverDiv = document.getElementById("trayCoverDiv");
+      var wirePositionDiv = document.getElementById("wirePositionDiv");
+      var wirePositionButtons = wirePositionDiv.getElementsByTagName("button");
+
+      // List of battery values that should show the Tray Cover
+      const showTrayCoverForBatteries = ["503736L-WGRC"];
+
+      // Check if the selected battery is in the list for Tray Cover
+      if (showTrayCoverForBatteries.includes(selectedValue)) {
+        trayCoverDiv.style.display = "block";
+      } else {
+        trayCoverDiv.style.display = "none";
+      }
+
+      // Hide all wire position buttons
+      for (var i = 0; i < wirePositionButtons.length; i++) {
+        wirePositionButtons[i].style.display = "none";
+      }
+
+      // Show wire position buttons based on the selected battery "A", "B", "C", "AB", "D", "C/D", "A Reverse", "A/B" layout-1604-61
+
+      if (
+        selectedValue.includes("97566L-WGRN") ||
+        selectedValue.includes("97568L-WGRN") ||
+        selectedValue.includes("97564L-WGRN") ||
+        selectedValue.includes("97556L-WGRN") ||
+        selectedValue.includes("503752L-WGRN") ||
+        selectedValue.includes("97560L-WGRN")
+      ) {
+        let displayBlockEleArr = [
+          "A",
+          "B",
+          "C",
+          "AB",
+          "D",
+          "C/D",
+          "A Reverse",
+          "A/B",
+        ];
+        displayBlockEleArr.forEach((item) => {
+          let tmpEle = document.getElementById(item);
+
+          tmpEle.style.display = "inline-block";
+        });
+      }
+
+      //  Show wire position buttons based on the selected battery   "A", "B", "C", "D", "AB", "A/B", "CD", "C Alternative" layout-1608-14
+      if (
+        selectedValue.includes("503736L-WGRC") ||
+        selectedValue.includes("503754L-WGRN")
+      ) {
+        let displayBlockEleArr = [
+          "A",
+          "B",
+          "C",
+          "D",
+          "AB",
+          "A/B",
+          "CD",
+          "C Alternative",
+        ];
+        displayBlockEleArr.forEach((item) => {
+          let tmpEle = document.getElementById(item);
+
+          tmpEle.style.display = "inline-block";
+        });
+      }
+
+      // Show wire position buttons based on the selected battery   "A", "B", "C", "AB", "D", "A/B" layout-(1604-62 & 1605-3)
+      if (
+        selectedValue.includes("503743L-WGRN") ||
+        selectedValue.includes("503744L-WGRN") ||
+        selectedValue.includes("504944L-WGRN") ||
+        selectedValue.includes("76122L-WGRC") ||
+        selectedValue.includes("506910L-WGRN") ||
+        selectedValue.includes("97592L-WGRN") ||
+        selectedValue.includes("7588L-WGRN") ||
+        selectedValue.includes("8666L-WGRN")
+      );
+
+      {
+        let displayBlockEleArr = ["A", "B", "C", "AB", "D", "A/B"];
+        displayBlockEleArr.forEach((item) => {
+          let tmpEle = document.getElementById(item);
+
+          tmpEle.style.display = "inline-block";
+        });
+      }
+    }
+
+    function showWirePositionOptions(optionsToShow) {
+      var wirePositionDiv = document.getElementById("wirePositionDiv");
+      for (var i = 0; i < optionsToShow.length; i++) {
+        var buttonToShow = wirePositionDiv.querySelector([
+          (onclick *= "${optionsToShow[i]}"),
+        ]);
+        if (buttonToShow) {
+          buttonToShow.style.display = "inline-block";
+        }
+      }
+    }
+
+    window.onload = setInitialBatteryValue;
+  </script> -->
+</html>
