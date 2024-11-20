@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfect Plus</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #ececec;
+    }
+
+    #battery-closed,
+    #battery-opened {
+      width: 100%;
+      height: 100vh;
+    }
+
+    .anchor {
+      display: none;
+    }
+
+    .lineContainer {
+      pointer-events: none;
+      display: block;
+    }
+
+    .line {
+      stroke: #e61616;
+      stroke-width: 2;
+      stroke-dasharray: 2
+    }
+
+    #c1,
+    #c2,
+    #c3,
+    #o1,
+    #o2,
+    #o3,
+    #o4 {
+      position: absolute;
+    }
+
+    #c1 {
+      top: 8%;
+      left: 3%;
+    }
+
+    #c2 {
+      bottom: 2%;
+      right: 16%;
+    }
+
+    #c3 {
+      top: 8%;
+      right: 3%;
+    }
+
+
+    #o1 {
+      top: 8%;
+      right: 2%;
+    }
+
+    #o2 {
+      bottom: 2%;
+      right: 2%;
+    }
+
+    #o3 {
+      bottom: 2%;
+      left: 2%;
+    }
+
+    #o4 {
+      top: 8%;
+      left: 2%;
+    }
+
+    .label {
+      background: #ececec;
+      border-radius: 4px;
+      border: none;
+      box-sizing: border-box;
+      /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25); */
+      color: rgba(0, 0, 0, 0.8);
+      display: block;
+      font-family: Futura, Helvetica Neue, sans-serif;
+      font-size: 14px;
+      font-weight: 100;
+      padding: 0.5em 1em;
+      pointer-events: none;
+
+      max-width: 450px;
+    }
+
+    #c1.label,
+    #o3.label,
+    #o4.label {
+      text-align: left;
+    }
+
+    #c3.label,
+    #o1.label,
+    #o2.label {
+      text-align: right;
+    }
+
+    .headline {
+      color: #e61616;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    #controls {
+      position: absolute;
+      top: 50%;
+      left: 2%;
+      transform: translateY(-50%);
+    }
+
+    #controls svg {
+      width: 60px;
+      cursor: pointer;
+    }
+
+    #battery-closed::part(default-ar-button) {
+      bottom: 64px;
+    }
+
+    /* This keeps child nodes hidden while the element loads */
+    :not(:defined)>* {
+      display: none;
+    }
+
+    .d-none {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <model-viewer id="battery-closed" class="d-none"
+    src="https://digitize-solutions.github.io/Enersys/Custom-Close/BatterywithSocketClosed.glb" ar
+    ar-modes="webxr scene-viewer quick-look" autoplay touch-action="pan-y" camera-controls tone-mapping="neutral"
+    shadow-intensity="1" camera-orbit="-162.6deg 33.09deg 3.067m" field-of-view="30deg" alt="A 3D Batter model.">
+    <div slot="hotspot-c1" class="anchor" data-position="0.3866780836721255m 0.7745943006250137m 0.059776109021486556m"
+      data-normal="-0.591230404196707m 0.6246113214273906m -0.5102032009877315m"></div>
+    <div slot="hotspot-c2" class="anchor" data-position="0.2750225792952409m 0.21769144334658327m -0.2085292053222656m"
+      data-normal="0m 0m -1m"></div>
+    <div slot="hotspot-c3" class="anchor"
+      data-position="-0.18045310759293798m 0.7075030029747821m -0.08990100200503745m"
+      data-normal="0.06919123036570954m -0.028697044678258645m -0.9971905802138393m"></div>
+
+    <svg id="lines" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="lineContainer">
+      <line class="line"></line>
+      <line class="line"></line>
+      <line class="line"></line>
+    </svg>
+
+    <div class="container">
+      <button id="c1" class="label">
+        <span class="headline">More work. More longevity.</span> <br />
+        Robust tubular vented technology recharges in <br />8-12 hours and provides unparalleled service
+        life<sup>1</sup>
+      </button>
+    </div>
+
+    <div class="container">
+      <button id="c2" class="label">
+        <span class="headline">Resoundingly recyclable.</span> <br />
+        Lead-acid batteries are a highly recycled product with up to 95% material reclaim rate..
+      </button>
+    </div>
+
+    <div class="container">
+      <button id="c3" class="label">
+        <span class="headline">Dependable power. Reliable protection.</span> <br />
+        Industry-leading warranty coverage to keep your <br />operations running – year after year.<sup>2</sup>
+      </button>
+    </div>
+
+  </model-viewer>
+
+  <model-viewer id="battery-opened" class=""
+    src="https://digitize-solutions.github.io/Enersys/Custom/BatterywithSocketOpen.glb" ar
+    ar-modes="webxr scene-viewer quick-look" autoplay touch-action="pan-y" camera-controls tone-mapping="neutral"
+    shadow-intensity="1" camera-orbit="-323.7deg 50.76deg 2.862m" field-of-view="26.26deg" alt="A 3D Batter model.">
+
+    <div slot="hotspot-o1" class="anchor" data-position="0.4960977927147048m 0.7096760544307755m -0.14513554249952249m"
+      data-normal="-0.007101625968722976m 0.999942252385412m 0.008065903730498824m"></div>
+    <div slot="hotspot-o2" class="anchor" data-position="0.5106426003674257m 0.31642190741289095m 0.1886651229858401m"
+      data-normal="0m 0m 1m"></div>
+    <div slot="hotspot-o3" class="anchor" data-position="0.44967326298964416m 0.506670441864501m 0.1757574725771991m"
+      data-normal="0.4163293642826709m 1.3555555649138965e-7m 0.9092138694696473m"></div>
+    <div slot="hotspot-o4" class="anchor"
+      data-position="0.018255394653499013m 0.6999459126436514m 0.018899078369140763m" data-normal="0m 0m 1m"
+      data-visibility-attribute="visible"></div>
+
+    <svg id="lines" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="lineContainer">
+      <line class="line"></line>
+      <line class="line"></line>
+      <line class="line"></line>
+      <line class="line"></line>
+    </svg>
+
+    <div class="container">
+      <button id="o1" class="label">
+        <span class="headline">Simplified watering. </span> <br />
+        Aquamatic watering system enables operators <br />to conveniently top-up battery from a single point.
+      </button>
+    </div>
+
+    <div class="container">
+      <button id="o2" class="label">
+        <span class="headline">Optimum Performance.</span> <br />
+        Electrolyte circulation system provides reduces <br />recharge time up to 30%, helps keep battery <br />cooler
+        and maximizes service life
+      </button>
+    </div>
+
+    <div class="container">
+      <button id="o3" class="label">
+        <span class="headline">Methodically managed.</span> <br />
+        Available battery data management tools for <br />higher reliability and longer battery life..
+      </button>
+    </div>
+
+    <div class="container">
+      <button id="o4" class="label">
+        <span class="headline">Conveniently monitored.</span> <br />
+        Equipped with a built-in monitor that indicates <br />when the battery requires topping-up.
+      </button>
+    </div>
+
+  </model-viewer>
+
+  <div id="controls">
+    <svg id="toggleAnnotations" style="enable-background:new 0 0 250 250;" width="50px" height="50px" version="1.1"
+      viewBox="0 0 250 250" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" data-hide='1'>
+      <style type="text/css">
+        .st0 {
+          fill: #FCC12D;
+        }
+
+        .st1 {
+          fill: #46E6F2;
+        }
+
+        .st2 {
+          fill: none;
+          stroke: #231F20;
+          stroke-width: 3;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-miterlimit: 10;
+        }
+
+        .st3 {
+          fill: #FFFFFF;
+        }
+
+        .st4 {
+          fill: none;
+          stroke: #FFFFFF;
+          stroke-width: 3;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-miterlimit: 10;
+        }
+      </style>
+      <path class="st0" id="light"
+        d="M167.1,111c0-24.2-20.9-43.5-45.7-40.7c-18.5,2.1-33.6,16.9-36,35.4  c-1.5,11.5,1.9,22.2,8.3,30.4c7.3,9.4,11,21.2,11,33.2v1.7h42.8v-1.7c0-12.4,4.4-24.2,11.7-34.1C164.2,128.4,167.1,120.1,167.1,111z  "
+        id="XMLID_19_" />
+      <path class="st1"
+        d="M146.2,182h-40.4c-3,0-5.5-2.4-5.5-5.5l0,0c0-3,2.4-5.5,5.5-5.5h40.4c3,0,5.5,2.4,5.5,5.5l0,0  C151.7,179.5,149.2,182,146.2,182z"
+        id="XMLID_18_" />
+      <path class="st1"
+        d="M143.2,192.8h-34.5c-2.8,0-5-2.3-5-5v-0.6c0-2.8,2.3-5,5-5h34.5c2.8,0,5,2.3,5,5v0.6  C148.3,190.5,146,192.8,143.2,192.8z"
+        id="XMLID_17_" />
+      <path class="st1"
+        d="M111.8,195.4v0.1c0,4.5,3.6,8.1,8.1,8.1h12.2c4.5,0,8.1-3.6,8.1-8.1v-0.1c0-1.4-1.2-2.6-2.6-2.6  h-23.2C113,192.8,111.8,194,111.8,195.4z"
+        id="XMLID_16_" />
+      <path class="st2"
+        d="M164,107.9c0-24.2-20.9-43.5-45.7-40.7c-18.5,2.1-33.6,16.9-36,35.4  c-1.5,11.5,1.9,22.2,8.3,30.4c7.3,9.4,11,21.2,11,33.2v1.7h42.8v-1.7c0-12.4,4.4-24.2,11.7-34.1C161.1,125.3,164,116.9,164,107.9z"
+        id="XMLID_15_" />
+      <path class="st2"
+        d="M140.1,189.6h-34.5c-2.8,0-5-2.3-5-5V184c0-2.8,2.3-5,5-5h34.5c2.8,0,5,2.3,5,5v0.6  C145.1,187.4,142.9,189.6,140.1,189.6z"
+        id="XMLID_14_" />
+      <path class="st2"
+        d="M108.6,192.2v0.1c0,4.5,3.6,8.1,8.1,8.1h12.2c4.5,0,8.1-3.6,8.1-8.1v-0.1c0-1.4-1.2-2.6-2.6-2.6  h-23.2C109.8,189.6,108.6,190.8,108.6,192.2z"
+        id="XMLID_13_" />
+      <ellipse class="st3" cx="102.1" cy="91.9" id="XMLID_12_" rx="6.9" ry="11.8"
+        transform="matrix(0.7723 0.6352 -0.6352 0.7723 81.5971 -43.9285)" />
+      <polyline class="st4" id="XMLID_11_" points="132.1,130 123,167.1 114,130 " />
+      <path class="st4"
+        d="M106.7,125.5c4.1,0,4.1,3.4,8.1,3.4c4.1,0,4.1-3.4,8.1-3.4c4.1,0,4.1,3.4,8.1,3.4  c4.1,0,4.1-3.4,8.1-3.4"
+        id="XMLID_10_" />
+      <line class="st2" id="XMLID_9_" x1="123" x2="123" y1="56.5" y2="40.8" />
+      <line class="st2" id="XMLID_8_" x1="150.9" x2="158" y1="60.2" y2="46.2" />
+      <line class="st2" id="XMLID_7_" x1="169.9" x2="179.3" y1="75.9" y2="69.7" />
+      <line class="st2" id="XMLID_6_" x1="176.7" x2="184.3" y1="97.8" y2="96.6" />
+      <line class="st2" id="XMLID_5_" x1="95.1" x2="88" y1="60.2" y2="46.2" />
+      <line class="st2" id="XMLID_4_" x1="76.1" x2="66.7" y1="75.9" y2="69.7" />
+      <line class="st2" id="XMLID_3_" x1="69.3" x2="61.7" y1="97.8" y2="96.6" />
+      <path class="st2"
+        d="M143,178.8h-40.4c-3,0-5.5-2.4-5.5-5.5v0c0-3,2.4-5.5,5.5-5.5H143c3,0,5.5,2.4,5.5,5.5v0  C148.5,176.4,146,178.8,143,178.8z"
+        id="XMLID_2_" />
+    </svg>
+
+    <button id="toggleBattery">
+      toggle
+    </button>
+  </div>
+
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script type="module">
+
+    const batteryClosed = document.querySelector('#battery-closed');
+    const batteryOpened = document.querySelector('#battery-opened');
+
+    let c1 = document.querySelector('#c1');
+    let c2 = document.querySelector('#c2');
+    let c3 = document.querySelector('#c3');
+
+    let o1 = document.querySelector('#o1');
+    let o2 = document.querySelector('#o2');
+    let o3 = document.querySelector('#o3');
+    let o4 = document.querySelector('#o4');
+
+    let baseRect;
+    let c1Rect;
+    let c2Rect;
+    let c3Rect;
+
+    let o1Rect;
+    let o2Rect;
+    let o3Rect;
+    let o4Rect;
+
+    function onResize() {
+      if (!batteryClosed?.classList.contains('d-none')) {
+        const arStatus = batteryClosed.getAttribute('ar-status');
+        baseRect = (arStatus == "not-presenting" || arStatus == "failed") ?
+          batteryClosed.getBoundingClientRect() : new DOMRect();
+
+        c1Rect = c1.getBoundingClientRect();
+        c2Rect = c2.getBoundingClientRect();
+        c3Rect = c3.getBoundingClientRect();
+      } else {
+        const arStatus = batteryOpened.getAttribute('ar-status');
+        baseRect = (arStatus == "not-presenting" || arStatus == "failed") ?
+          batteryOpened.getBoundingClientRect() : new DOMRect();
+
+        o1Rect = o1.getBoundingClientRect();
+        o2Rect = o2.getBoundingClientRect();
+        o3Rect = o3.getBoundingClientRect();
+        o4Rect = o4.getBoundingClientRect();
+      }
+    }
+
+    window.addEventListener("resize", onResize);
+
+    batteryClosed?.addEventListener('ar-status', (event) => {
+      let lines = batteryClosed?.querySelectorAll('line');
+      lines.forEach((element) => {
+        if (event.detail.status !== 'session-started') {
+          element.classList.remove('hide');
+        } else {
+          element.classList.add('hide');
+        }
+      });
+      onResize();
+    });
+
+    batteryOpened?.addEventListener('ar-status', (event) => {
+      let lines = batteryOpened?.querySelectorAll('line');
+      lines.forEach((element) => {
+        if (event.detail.status !== 'session-started') {
+          element.classList.remove('hide');
+        } else {
+          element.classList.add('hide');
+        }
+      });
+      onResize();
+    });
+
+
+    batteryClosed?.addEventListener('load', ()=> loadBatteryClosedSvgLines());
+
+    function loadBatteryClosedSvgLines(){
+      onResize();
+      let lines = batteryClosed?.querySelectorAll('line');
+
+      // update svg
+      function drawLine(svgLine, name, rect) {
+        const hotspot = batteryClosed.queryHotspot('hotspot-' + name);
+        svgLine.setAttribute('x1', hotspot.canvasPosition.x);
+        svgLine.setAttribute('y1', hotspot.canvasPosition.y);
+        svgLine.setAttribute('x2', (rect.left + rect.right) / 2 - baseRect.left);
+        svgLine.setAttribute('y2', rect.top - baseRect.top);
+      }
+
+      // use requestAnimationFrame to update with renderer
+      const startSVGRenderLoop = () => {
+        drawLine(lines[0], 'c1', c1Rect);
+        drawLine(lines[1], 'c2', c2Rect);
+        drawLine(lines[2], 'c3', c3Rect);
+        requestAnimationFrame(startSVGRenderLoop);
+      };
+
+      startSVGRenderLoop();
+    }
+
+    batteryOpened?.addEventListener('load', ()=> loadBatteryOpenedSvgLines());
+
+    function loadBatteryOpenedSvgLines() {
+      onResize();
+      let lines = batteryOpened?.querySelectorAll('line');
+
+      // update svg
+      function drawLine(svgLine, name, rect) {
+        const hotspot = batteryOpened.queryHotspot('hotspot-' + name);
+        svgLine.setAttribute('x1', hotspot.canvasPosition.x);
+        svgLine.setAttribute('y1', hotspot.canvasPosition.y);
+        svgLine.setAttribute('x2', (rect.left + rect.right) / 2 - baseRect.left);
+        svgLine.setAttribute('y2', rect.top - baseRect.top);
+      }
+
+      // use requestAnimationFrame to update with renderer
+      const startSVGRenderLoop = () => {
+        drawLine(lines[0], 'o1', o1Rect);
+        drawLine(lines[1], 'o2', o2Rect);
+        drawLine(lines[2], 'o3', o3Rect);
+        drawLine(lines[3], 'o4', o4Rect);
+        requestAnimationFrame(startSVGRenderLoop);
+      };
+
+      startSVGRenderLoop();
+    }
+
+
+    const toggleAnnotations = document.getElementById('toggleAnnotations')
+    toggleAnnotations.addEventListener('click', () => {
+      let display = 'none';
+
+      if (toggleAnnotations.getAttribute('data-hide') === "1") {
+        toggleAnnotations.setAttribute('data-hide', '0')
+      } else {
+        toggleAnnotations.setAttribute('data-hide', '1')
+        display = 'inline'
+      }
+
+      light.classList.toggle('st0');
+      light.classList.toggle('st3');
+
+      handleToggle(display);
+    })
+
+
+    const toggleBattery = document.getElementById('toggleBattery')
+    toggleBattery.addEventListener('click', () => {
+      batteryClosed.classList.toggle('d-none');
+      batteryOpened.classList.toggle('d-none');
+
+      toggleAnnotations.setAttribute('data-hide', '1');
+
+      light.classList.add('st0');
+      light.classList.remove('st3');
+
+      let display = 'inline';
+      handleToggle(display);
+    })
+
+    function handleToggle(display){
+      let lines;
+      if(batteryClosed?.classList.contains('d-none')){
+        lines = batteryOpened?.querySelectorAll('line');
+      } else {
+        lines = batteryClosed?.querySelectorAll('line');
+      }
+
+      lines.forEach(line => {
+        line.style.display = display;
+      })
+
+      c1.style.display = display;
+      c2.style.display = display;
+      c3.style.display = display;
+
+      o1.style.display = display;
+      o2.style.display = display;
+      o3.style.display = display;
+      o4.style.display = display;
+    }
+
+  </script>
+
+
+</body>
+
+</html>
