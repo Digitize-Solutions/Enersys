@@ -163,101 +163,104 @@
 
 <body>
 
-  <model-viewer id="battery-closed" class=""
-    src="https://digitize-solutions.github.io/Enersys/Custom-Close/BatterywithSocketClosed.glb" ar
-    ar-modes="webxr scene-viewer quick-look" autoplay touch-action="pan-y" camera-controls tone-mapping="neutral"
-    shadow-intensity="1" camera-orbit="-162.6deg 33.09deg 3.067m" field-of-view="30deg" alt="A 3D Batter model.">
-    <div slot="hotspot-c1" class="anchor" data-position="0.3866780836721255m 0.7745943006250137m 0.059776109021486556m"
-      data-normal="-0.591230404196707m 0.6246113214273906m -0.5102032009877315m"></div>
-    <div slot="hotspot-c2" class="anchor" data-position="0.2750225792952409m 0.21769144334658327m -0.2085292053222656m"
-      data-normal="0m 0m -1m"></div>
-    <div slot="hotspot-c3" class="anchor"
-      data-position="-0.18045310759293798m 0.7075030029747821m -0.08990100200503745m"
-      data-normal="0.06919123036570954m -0.028697044678258645m -0.9971905802138393m"></div>
+  <div id="model-view">
 
-    <svg id="lines" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="lineContainer">
-      <line class="line"></line>
-      <line class="line"></line>
-      <line class="line"></line>
-    </svg>
+    <model-viewer id="battery-closed" class=""
+      src="https://digitize-solutions.github.io/Enersys/Custom-Close/BatterywithSocketClosed.glb" ar
+      ar-modes="webxr scene-viewer quick-look" autoplay touch-action="pan-y" camera-controls tone-mapping="neutral"
+      shadow-intensity="1" camera-orbit="-162.6deg 33.09deg 3.067m" field-of-view="30deg" alt="A 3D Batter model.">
+      <div slot="hotspot-c1" class="anchor" data-position="0.3866780836721255m 0.7745943006250137m 0.059776109021486556m"
+        data-normal="-0.591230404196707m 0.6246113214273906m -0.5102032009877315m"></div>
+      <div slot="hotspot-c2" class="anchor" data-position="0.2750225792952409m 0.21769144334658327m -0.2085292053222656m"
+        data-normal="0m 0m -1m"></div>
+      <div slot="hotspot-c3" class="anchor"
+        data-position="-0.18045310759293798m 0.7075030029747821m -0.08990100200503745m"
+        data-normal="0.06919123036570954m -0.028697044678258645m -0.9971905802138393m"></div>
 
-    <div class="container">
-      <button id="c1" class="label">
-        <span class="headline">More work. More longevity.</span> <br />
-        Robust tubular vented technology recharges in <br />8-12 hours and provides unparalleled service
-        life<sup>1</sup>
-      </button>
-    </div>
+      <svg id="lines" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="lineContainer">
+        <line class="line"></line>
+        <line class="line"></line>
+        <line class="line"></line>
+      </svg>
 
-    <div class="container">
-      <button id="c2" class="label">
-        <span class="headline">Resoundingly recyclable.</span> <br />
-        Lead-acid batteries are a highly recycled product with up to 95% material reclaim rate..
-      </button>
-    </div>
+      <div class="container">
+        <button id="c1" class="label">
+          <span class="headline">More work. More longevity.</span> <br />
+          Robust tubular vented technology recharges in <br />8-12 hours and provides unparalleled service
+          life<sup>1</sup>
+        </button>
+      </div>
 
-    <div class="container">
-      <button id="c3" class="label">
-        <span class="headline">Dependable power. Reliable protection.</span> <br />
-        Industry-leading warranty coverage to keep your <br />operations running – year after year.<sup>2</sup>
-      </button>
-    </div>
+      <div class="container">
+        <button id="c2" class="label">
+          <span class="headline">Resoundingly recyclable.</span> <br />
+          Lead-acid batteries are a highly recycled product with up to 95% material reclaim rate..
+        </button>
+      </div>
 
-  </model-viewer>
+      <div class="container">
+        <button id="c3" class="label">
+          <span class="headline">Dependable power. Reliable protection.</span> <br />
+          Industry-leading warranty coverage to keep your <br />operations running – year after year.<sup>2</sup>
+        </button>
+      </div>
 
-  <model-viewer id="battery-opened" class="d-none"
-    src="https://digitize-solutions.github.io/Enersys/Custom/BatterywithSocketOpen.glb" ar
-    ar-modes="webxr scene-viewer quick-look" autoplay touch-action="pan-y" camera-controls tone-mapping="neutral"
-    shadow-intensity="1" camera-orbit="-323.7deg 50.76deg 2.862m" field-of-view="26.26deg" alt="A 3D Batter model.">
+    </model-viewer>
 
-    <div slot="hotspot-o1" class="anchor" data-position="0.4960977927147048m 0.7096760544307755m -0.14513554249952249m"
-      data-normal="-0.007101625968722976m 0.999942252385412m 0.008065903730498824m"></div>
-    <div slot="hotspot-o2" class="anchor" data-position="0.5106426003674257m 0.31642190741289095m 0.1886651229858401m"
-      data-normal="0m 0m 1m"></div>
-    <div slot="hotspot-o3" class="anchor" data-position="0.44967326298964416m 0.506670441864501m 0.1757574725771991m"
-      data-normal="0.4163293642826709m 1.3555555649138965e-7m 0.9092138694696473m"></div>
-    <div slot="hotspot-o4" class="anchor"
-      data-position="0.018255394653499013m 0.6999459126436514m 0.018899078369140763m" data-normal="0m 0m 1m"
-      data-visibility-attribute="visible"></div>
+    <model-viewer id="battery-opened" class="d-none"
+      src="https://digitize-solutions.github.io/Enersys/Custom/BatterywithSocketOpen.glb" ar
+      ar-modes="webxr scene-viewer quick-look" autoplay touch-action="pan-y" camera-controls tone-mapping="neutral"
+      shadow-intensity="1" camera-orbit="-323.7deg 50.76deg 2.862m" field-of-view="26.26deg" alt="A 3D Batter model.">
 
-    <svg id="lines" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="lineContainer">
-      <line class="line"></line>
-      <line class="line"></line>
-      <line class="line"></line>
-      <line class="line"></line>
-    </svg>
+      <div slot="hotspot-o1" class="anchor" data-position="0.4960977927147048m 0.7096760544307755m -0.14513554249952249m"
+        data-normal="-0.007101625968722976m 0.999942252385412m 0.008065903730498824m"></div>
+      <div slot="hotspot-o2" class="anchor" data-position="0.5106426003674257m 0.31642190741289095m 0.1886651229858401m"
+        data-normal="0m 0m 1m"></div>
+      <div slot="hotspot-o3" class="anchor" data-position="0.44967326298964416m 0.506670441864501m 0.1757574725771991m"
+        data-normal="0.4163293642826709m 1.3555555649138965e-7m 0.9092138694696473m"></div>
+      <div slot="hotspot-o4" class="anchor"
+        data-position="0.018255394653499013m 0.6999459126436514m 0.018899078369140763m" data-normal="0m 0m 1m"
+        data-visibility-attribute="visible"></div>
 
-    <div class="container">
-      <button id="o1" class="label">
-        <span class="headline">Simplified watering. </span> <br />
-        Aquamatic watering system enables operators <br />to conveniently top-up battery from a single point.
-      </button>
-    </div>
+      <svg id="lines" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="lineContainer">
+        <line class="line"></line>
+        <line class="line"></line>
+        <line class="line"></line>
+        <line class="line"></line>
+      </svg>
 
-    <div class="container">
-      <button id="o2" class="label">
-        <span class="headline">Optimum Performance.</span> <br />
-        Electrolyte circulation system provides reduces <br />recharge time up to 30%, helps keep battery <br />cooler
-        and maximizes service life
-      </button>
-    </div>
+      <div class="container">
+        <button id="o1" class="label">
+          <span class="headline">Simplified watering. </span> <br />
+          Aquamatic watering system enables operators <br />to conveniently top-up battery from a single point.
+        </button>
+      </div>
 
-    <div class="container">
-      <button id="o3" class="label">
-        <span class="headline">Methodically managed.</span> <br />
-        Available battery data management tools for <br />higher reliability and longer battery life..
-      </button>
-    </div>
+      <div class="container">
+        <button id="o2" class="label">
+          <span class="headline">Optimum Performance.</span> <br />
+          Electrolyte circulation system provides reduces <br />recharge time up to 30%, helps keep battery <br />cooler
+          and maximizes service life
+        </button>
+      </div>
 
-    <div class="container">
-      <button id="o4" class="label">
-        <span class="headline">Conveniently monitored.</span> <br />
-        Equipped with a built-in monitor that indicates <br />when the battery requires topping-up.
-      </button>
-    </div>
+      <div class="container">
+        <button id="o3" class="label">
+          <span class="headline">Methodically managed.</span> <br />
+          Available battery data management tools for <br />higher reliability and longer battery life..
+        </button>
+      </div>
 
-  </model-viewer>
+      <div class="container">
+        <button id="o4" class="label">
+          <span class="headline">Conveniently monitored.</span> <br />
+          Equipped with a built-in monitor that indicates <br />when the battery requires topping-up.
+        </button>
+      </div>
 
+    </model-viewer>
+
+  </div>
   <div id="controls">
     <svg id="toggleAnnotations" style="enable-background:new 0 0 250 250;" width="50px" height="50px" version="1.1"
       viewBox="0 0 250 250" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
@@ -335,6 +338,18 @@
     <button id="toggleBattery">
       OPEN
     </button>
+    <button id="test-button" class="camera-view" data-orbit="58.93deg 9.066deg 1.663m" data-view = "12deg" data-clientX = "963" data-clientY = "350">
+      green small
+    </button>
+    <button id="test-button" class="camera-view" data-orbit="-97.46deg 41.93deg 1.663m" data-view = "12deg" data-clientX = "959" data-clientY = "336">
+      red mid
+    </button>
+    <button id="test-button" class="camera-view" data-orbit="-317.3deg 46.09deg 1.663m" data-view = "12deg" data-clientX = "982" data-clientY = "372">
+      side socket
+    </button>
+    <button id="test-button" class="camera-view" data-orbit="-94.8deg 76.68deg 1.663m" data-view = "12deg" data-clientX = "1048" data-clientY = "457">
+      side label small
+    </button>
   </div>
 
 
@@ -343,6 +358,8 @@
 
     const batteryClosed = document.querySelector('#battery-closed');
     const batteryOpened = document.querySelector('#battery-opened');
+    let changeColorClose = null;
+    let changeColorOpen = null;
 
     let c1 = document.querySelector('#c1');
     let c2 = document.querySelector('#c2');
@@ -436,6 +453,22 @@
       };
 
       startSVGRenderLoop();
+
+      // const changeColor = (event) => {
+      //   console.log(' default one event.clientX, event.clientY>>>>>>>>>>>>>>>>>>', event.clientX, event.clientY)
+      //   const material = batteryClosed.materialFromPoint(event.clientX, event.clientY);
+      //   if(material != null){
+      //     material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()])
+      //   }
+      // }
+      // batteryClosed?.addEventListener('click',  changeColor);
+      changeColorClose = (element, clientX, clientY) => {
+        // console.log('secodnd   event.clientX, event.clientY>>>>>>>>>>>>>>>>>>', clientX, clientY, element)
+        const material = element.materialFromPoint(clientX, clientY);
+        if(material != null){
+          material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()])
+        }
+      }
     }
 
     batteryOpened?.addEventListener('load', () => loadBatteryOpenedSvgLines());
@@ -463,6 +496,14 @@
       };
 
       startSVGRenderLoop();
+      
+      changeColorOpen = (element, clientX, clientY) => {
+        // console.log('secodnd   event.clientX, event.clientY>>>>>>>>>>>>>>>>>>', clientX, clientY, element)
+        const material = element.materialFromPoint(clientX, clientY);
+        if(material != null){
+          material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()])
+        }
+      }
     }
 
 
@@ -530,6 +571,25 @@
       o3.style.display = display;
       o4.style.display = display;
     }
+
+    const annotationClicked = (annotation) => {
+      let dataset = annotation.dataset;
+      let modelViewer2 = null;
+      if(batteryClosed?.classList.contains('d-none')){
+        modelViewer2 = batteryOpened
+        changeColorOpen(modelViewer2, dataset.clientx, dataset.clienty)
+      }else{
+        modelViewer2 = batteryClosed
+        changeColorClose(modelViewer2, dataset.clientx, dataset.clienty)
+      }
+      modelViewer2.cameraOrbit = dataset.orbit;
+      modelViewer2.fieldOfView = dataset.view;
+
+    }
+
+    document.querySelectorAll('.camera-view').forEach((hotspot) => {
+      hotspot.addEventListener('click', () => annotationClicked(hotspot));
+    });
 
   </script>
 
