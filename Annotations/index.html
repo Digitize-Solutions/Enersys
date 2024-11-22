@@ -338,16 +338,16 @@
     <button id="toggleBattery">
       OPEN
     </button>
-    <button id="test-button" class="camera-view" data-orbit="58.93deg 9.066deg 1.663m" data-view = "12deg" data-clientX = "963" data-clientY = "350">
+    <button id="test-button" class="camera-view" data-orbit="58.93deg 9.066deg 1.663m" data-view = "12deg" data-name="Smart_Blinky_Base">
       green small
     </button>
-    <button id="test-button" class="camera-view" data-orbit="-97.46deg 41.93deg 1.663m" data-view = "12deg" data-clientX = "959" data-clientY = "336">
+    <button id="test-button" class="camera-view" data-orbit="-97.46deg 41.93deg 1.663m" data-view = "12deg" data-name="Red_Cable">
       red mid
     </button>
-    <button id="test-button" class="camera-view" data-orbit="-317.3deg 46.09deg 1.663m" data-view = "12deg" data-clientX = "982" data-clientY = "372">
+    <button id="test-button" class="camera-view" data-orbit="-317.3deg 46.09deg 1.663m" data-view = "12deg" data-name="Socket">
       side socket
     </button>
-    <button id="test-button" class="camera-view" data-orbit="-94.8deg 76.68deg 1.663m" data-view = "12deg" data-clientX = "1048" data-clientY = "457">
+    <button id="test-button" class="camera-view" data-orbit="-94.8deg 76.68deg 1.663m" data-view = "12deg" data-name="S_Label">
       side label small
     </button>
   </div>
@@ -454,17 +454,27 @@
 
       startSVGRenderLoop();
 
-      // const changeColor = (event) => {
-      //   console.log(' default one event.clientX, event.clientY>>>>>>>>>>>>>>>>>>', event.clientX, event.clientY)
-      //   const material = batteryClosed.materialFromPoint(event.clientX, event.clientY);
-      //   if(material != null){
-      //     material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()])
-      //   }
-      // }
+      const changeColor = (event) => {
+        // console.log(' default one event.clientX, event.clientY>>>>>>>>>>>>>>>>>>', event.clientX, event.clientY, event)
+        const material = batteryClosed.materialFromPoint(event.clientX, event.clientY);
+        // console.log('material>>>>>>>>>>>>>>>', material)
+        if(material != null){
+          material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()])
+          // material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()])
+        }
+
+        const materialByName = batteryClosed.model.getMaterialByName('Socket')
+        // const materialByName = batteryClosed.Model?.getMaterialByName('Socket')
+        // console.log('materialByName>>>>>>>>>>>>>>>', materialByName, batteryClosed)
+        if(materialByName != null){
+          materialByName.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()])
+        }
+      }
+
+
       // batteryClosed?.addEventListener('click',  changeColor);
-      changeColorClose = (element, clientX, clientY) => {
-        // console.log('secodnd   event.clientX, event.clientY>>>>>>>>>>>>>>>>>>', clientX, clientY, element)
-        const material = element.materialFromPoint(clientX, clientY);
+      changeColorClose = (element, name) => {
+        const material = element.model.getMaterialByName(name);
         if(material != null){
           material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()])
         }
@@ -497,9 +507,8 @@
 
       startSVGRenderLoop();
       
-      changeColorOpen = (element, clientX, clientY) => {
-        // console.log('secodnd   event.clientX, event.clientY>>>>>>>>>>>>>>>>>>', clientX, clientY, element)
-        const material = element.materialFromPoint(clientX, clientY);
+      changeColorOpen = (element, name) => {
+        const material = element.model.getMaterialByName(name);
         if(material != null){
           material.pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()])
         }
@@ -577,10 +586,10 @@
       let modelViewer2 = null;
       if(batteryClosed?.classList.contains('d-none')){
         modelViewer2 = batteryOpened
-        changeColorOpen(modelViewer2, dataset.clientx, dataset.clienty)
+        changeColorOpen(modelViewer2, dataset.name)
       }else{
         modelViewer2 = batteryClosed
-        changeColorClose(modelViewer2, dataset.clientx, dataset.clienty)
+        changeColorClose(modelViewer2, dataset.name)
       }
       modelViewer2.cameraOrbit = dataset.orbit;
       modelViewer2.fieldOfView = dataset.view;
