@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3D Model Viewer with AR and QR Code</title>
+    <title>3D Model Viewer with AR and Animation Toggle</title>
     <!-- Load model-viewer library -->
     <script
       type="module"
@@ -33,7 +33,11 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
 
-      button {
+      #ar-toggle-button {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
         padding: 10px 20px;
         font-size: 16px;
         background-color: #007bff;
@@ -41,10 +45,11 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        margin-top: 10px;
+        z-index: 999; /* Ensure it's on top in AR */
+        display: none;
       }
 
-      button:hover {
+      #ar-toggle-button:hover {
         background-color: #0056b3;
       }
     </style>
@@ -55,7 +60,7 @@
       id="modelViewer"
       src="Ironclad.glb"
       ar
-      ar-modes="scene-viewer webxr quick-look"
+      ar-modes="webxr scene-viewer quick-look"
       camera-controls
       tone-mapping="neutral"
       poster="poster.webp"
@@ -63,49 +68,35 @@
       autoplay
     >
       <button slot="ar-button" id="ar-button">View in your space</button>
-      <button
-        class="Hotspot"
-        slot="hotspot-1"
-        data-surface="20 0 1245 2189 1345 0.135 0.082 0.783"
-        data-visibility-attribute="visible"
-      >
-        <div class="HotspotAnnotation">Cover</div></button
-      ><button
-        class="Hotspot"
-        slot="hotspot-2"
-        data-surface="17 0 8893 8890 8887 0.671 0.249 0.080"
-        data-visibility-attribute="visible"
-      >
-        <div class="HotspotAnnotation">Socket</div></button
-      ><button
-        class="Hotspot"
-        slot="hotspot-3"
-        data-surface="35 0 5 2 492 0.680 0.050 0.270"
-        data-visibility-attribute="visible"
-      >
-        <div class="HotspotAnnotation">WiiQ</div></button
-      ><button
-        class="Hotspot"
-        slot="hotspot-4"
-        data-surface="22 0 19 15 1 0.448 0.216 0.336"
-        data-visibility-attribute="visible"
-      >
-        <div class="HotspotAnnotation">Blinky</div>
-      </button>
     </model-viewer>
+
+    <button id="ar-toggle-button">Stop Animation</button>
 
     <script>
       const modelViewer = document.getElementById("modelViewer");
+      const arToggleButton = document.getElementById("ar-toggle-button");
 
-      // Listen for AR session start and stop events
+      let isAnimationPlaying = true;
+
+      // Listen for AR session start
       modelViewer.addEventListener("ar-status", (event) => {
         if (event.detail.status === "session-started") {
-          // Disable animation in AR mode
-          modelViewer.pause();
+          arToggleButton.style.display = "block"; // Show the button in AR
         } else if (event.detail.status === "not-presenting") {
-          // Re-enable animation when exiting AR mode
-          modelViewer.play();
+          arToggleButton.style.display = "none"; // Hide the button outside AR
         }
+      });
+
+      // Handle animation toggle button
+      arToggleButton.addEventListener("click", () => {
+        if (isAnimationPlaying) {
+          modelViewer.pause(); // Stop animation
+          arToggleButton.textContent = "Play Animation";
+        } else {
+          modelViewer.play(); // Resume animation
+          arToggleButton.textContent = "Stop Animation";
+        }
+        isAnimationPlaying = !isAnimationPlaying; // Toggle state
       });
     </script>
   </body>
